@@ -1,4 +1,6 @@
-const path = require('path');
-// Path to the server file in your dist folder
-const server = require('../dist/ecommerceProject/server/main');
-module.exports = server.app();
+const server = import('../dist/ecommerceProject/server/main.server.mjs');
+
+export default async (req, res) => {
+  const app = await server;
+  app.reqHandler(req, res);
+};
