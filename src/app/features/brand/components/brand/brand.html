@@ -1,0 +1,14 @@
+<section class="text-main my-25">
+  <div class="container mx-auto">
+    <h1 class="font-bold font-DM text-5xl mb-5">{{'brand.mybrand'|translate}}</h1>
+    <div class="grid grid-cols-4 gap-5">
+      @for (brand of brandList().data; track brand._id) {
+        <div class="rounded  cursor-pointer transition duration-150 hover:shadow-2xl shadow-main hover:-translate-y-2">
+          <img [src]="brand.image" class="w-full" [alt]="brand.name" />
+        </div>
+      } @empty {
+        <h2 class="text-8xl col-span-12 text-center">{{'brand.nobrand'|translate}}</h2>
+      }
+    </div>
+  </div>
+</section>

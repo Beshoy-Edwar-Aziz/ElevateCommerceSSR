@@ -1,0 +1,21 @@
+<div class="grid grid-cols-12 mt-10">
+  <div class="text-main col-span-12 md:col-span-4">
+    <h2 class="font-bold font-DM text-3xl">{{ 'home.shop' | translate }}</h2>
+    <p class="text-xl font-libre">{{ 'home.para' | translate }}</p>
+    <button
+      class="bg-link text-white font-bold rounded p-4 cursor-pointer hover:bg-dark transition duration-150 mt-5"
+      routerLink="/user/product"
+    >
+      {{ 'home.shopBtn' | translate }}
+    </button>
+  </div>
+  <div class="col-span-12 md:col-span-8">
+    <owl-carousel-o [options]="customOptions">
+      @for (product of productData; track product._id) {
+        <ng-template carouselSlide>
+          <product-card [product]="product" [wishList]="wishListProds()" (productId)="addProductToCart($event)" (productIdForWishList)="addProductToWishList($event)"></product-card>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+@if (controls?.errors && controls?.touched) {
+  @if (controls?.getError('required')) {
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">field is Required</p>
+    </div>
+  }
+  @if (controls?.getError('minlength')) {
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">Minimum Length is 3</p>
+    </div>
+  }
+  @if (controls?.getError('maxlength')) {
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">MaxLength is 25</p>
+    </div>
+  }
+  @if (controls?.getError('email')) {
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">Email must contain @</p>
+    </div>
+  }
+  @if (controls?.getError('pattern')) {
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">At least one upper case</p>
+      <p class="mt-2.5 text-sm text-fg-danger-strong">At least one lower case</p>
+      <p class="mt-2.5 text-sm text-fg-danger-strong">At least one digit</p>
+      <p class="mt-2.5 text-sm text-fg-danger-strong">At least one special character</p>
+      <p class="mt-2.5 text-sm text-fg-danger-strong">Minimum eight in length</p>
+    </div>
+  }
+}
+@if(controls?.get('phone')?.touched && controls?.get('phone')?.errors){
+  @if(controls?.get('phone')?.getError('required')){
+     <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">field is required</p>
+    </div>
+  }
+  @if(controls?.get('phone')?.getError('pattern')){
+    <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">Number must start with 012 || 011 || 010 || 015</p>
+      <p class="mt-2.5 text-sm text-fg-danger-strong">An Example: 01201493556</p>
+    </div>
+  }
+}
+@if(controls?.get('rePassword')?.touched){
+@if(controls?.get('rePassword')?.getError('required')){
+   <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">field is required</p>
+    </div>
+}
+@if(controls?.getError('mismatch')){
+  <div class="mb-6">
+      <p class="mt-2.5 text-sm text-fg-danger-strong">Password Mismatch</p>
+    </div>
+  }
+}

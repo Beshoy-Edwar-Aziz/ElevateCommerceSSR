@@ -1,0 +1,45 @@
+<section class="mt-18 container mx-auto text-start font-libre">
+  @for (order of loggedUserOrdersList(); track order._id) {
+    <div class="grid grid-cols-12">
+      <div class="bg-main p-5 mt-5 mb-1 rounded col-span-12">
+        <div class="flex space-x-5 justify-around">
+          <div class="flex flex-col text-center">
+            <h2>{{'profile.orderPlaced'|translate}}</h2>
+            <span>{{ order.updatedAt | date }}</span>
+          </div>
+          <div class="flex flex-col text-center">
+            <h2>{{'order.total'|translate}}</h2>
+            <span>{{ order.totalOrderPrice | currency: 'EGP' }}</span>
+          </div>
+          <div class="flex flex-col text-center">
+            <h2>{{'profile.shippedTo'|translate}}</h2>
+            <span>{{ order.user.name }}</span>
+          </div>
+          <div class="flex">
+            <h2>{{'profile.order'|translate}} #</h2>
+            {{order.id}}
+          </div>
+        </div>
+      </div>
+      @for (cartItem of order.cartItems; track cartItem._id) {
+        <div class="grid grid-cols-6 pt-2 md:grid-cols-12 bg-main col-span-12 gap-5">
+          <div class="col-span-1 ps-2 pb-1">
+            <img
+              [src]="cartItem.product.imageCover"
+              class="w-full"
+              [alt]="cartItem.product.title"
+            />
+          </div>
+          <div class="col-span-5">
+            <p>{{ cartItem.product.title }}</p>
+            <p>{{cartItem.price|currency:'EGP'}}</p>
+          </div>
+        </div>
+      }
+    </div>
+  }@empty{
+    <div class="text-center mt-25 py-5 rounded shadow-xl container mx-auto">
+      <h2 class="font-libre font-bold text-4xl text-main">{{'profile.orderAvailable'|translate}}</h2>
+    </div>
+  }
+</section>

@@ -1,0 +1,41 @@
+<div class="group transition-all relative duration-200 p-4 cursor-pointer">
+  @for (prod of wishList; track prod._id) {
+    @if (prod._id === product._id) {
+      <div
+        (click)="onAddToWishList()"
+        class="group absolute top-5 right-5 border-2 rounded-full w-10 h-10 grid justify-center items-center"
+      >
+        <i class="fa-solid fa-heart group-hover:text-main"></i>
+      </div>
+    } @else {
+      <div
+        (click)="onAddToWishList()"
+        class="group absolute top-5 right-5 border rounded-full w-10 h-10 grid justify-center items-center"
+      >
+        <i class="fa-regular fa-heart group-hover:text-main"></i>
+      </div>
+    }
+  }@empty{
+   <div
+        (click)="onAddToWishList()"
+        class="group absolute top-5 right-5 border rounded-full w-10 h-10 grid justify-center items-center"
+      >
+        <i class="fa-regular fa-heart group-hover:text-main"></i>
+      </div>
+  }
+  <div class="" [routerLink]="['/user/productDetail/', product._id]">
+    <img class="w-full rounded-xl border" [src]="product.imageCover" [alt]="product.title" />
+    <h3 class="text-main font-bold text-2xl line-clamp-1 underline">{{ product.title }}</h3>
+    <p class="text-main font-bold text-sm line-clamp-1">{{ product.description }}</p>
+  </div>
+  <div
+    class="translate-y-full opacity-0 group-hover:translate-0 group-hover:opacity-100 transition-all duration-300"
+  >
+    <button
+      (click)="onAddToCart()"
+      class="w-full text-2xl cursor-pointer p-2 border rounded-xl hover:text-white hover:bg-dark-strong transition-all duration-100"
+    >
+      {{ 'product.add' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<li>
+            <button id="dropdownNvbarButton" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 rounded font-medium text-heading md:w-auto hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">
+              {{currentLang()}}
+              <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownNavbar" class="z-10 hidden bg-main  border border-main rounded-base shadow-lg w-44">
+              <ul class="p-2 text-sm text-white font-medium" aria-labelledby="dropdownNvbarButton">
+                <li (click)="switchLang('en')">
+                  <a class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">en</a>
+                </li>
+                <li (click)="switchLang('ar')">
+                  <a class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">العربية</a>
+                </li>
+              </ul>
+          </div>
+        </li>

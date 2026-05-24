@@ -1,0 +1,30 @@
+<div class="mt-10">
+  <figure class="max-w-screen-md p-4 ms-4">
+    <div class="flex items-center">
+      <i class="fa-solid fa-star" [class.text-yellow-200]="review.rating >= 1"></i>
+      <i class="fa-solid fa-star" [class.text-yellow-200]="review.rating >= 2"></i>
+      <i class="fa-solid fa-star" [class.text-yellow-200]="review.rating >= 3"></i>
+      <i class="fa-solid fa-star" [class.text-yellow-200]="review.rating >= 4"></i>
+      <i class="fa-solid fa-star" [class.text-yellow-200]="review.rating == 5"></i>
+      <span class="ms-2">{{ review.rating }}</span>
+    </div>
+    <blockquote>
+      <p class="text-2xl font-semibold text-heading tracking-tight wrap-break-word">"{{ review.review }}"</p>
+    </blockquote>
+    <figcaption class="flex items-center mt-6 space-x-3 rtl:space-x-reverse">
+      <img
+        class="w-6 h-6 rounded-full"
+        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+        alt="profile picture"
+      />
+      <div class="flex items-center divide-x rtl:divide-x-reverse divide-default">
+        <cite class="pe-3 font-medium text-heading">{{ review.user.name }}</cite>
+        <cite class="ps-3 text-sm text-body">User</cite>
+      </div>
+    </figcaption>
+    @if(decodedTokenId===review.user._id){
+    <button (click)="sendReviewId()" class="bg-main text-white text-lg font-semibold p-2 w-20 mt-5 rounded cursor-pointer">{{'review.edit'|translate}}</button>
+    }
+
+  </figure>
+</div>

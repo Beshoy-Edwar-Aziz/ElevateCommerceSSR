@@ -1,0 +1,97 @@
+<section class="grid grid-cols-12">
+  <div class="col-span-12 md:ms-2 md:col-span-4">
+    <h2 class="font-bold font-DM text-3xl text-main">{{'review.title'|translate}}:</h2>
+    <form
+      [formGroup]="reviewPosting"
+      (ngSubmit)="submitFormCreate()"
+      class="text-black font-semibold font-libre mt-5"
+    >
+      <div class="mb-5">
+        <label for="review" class="block mb-2.5 text-sm font-medium">{{'review.review'|translate}}</label>
+        <textarea
+          type="review"
+          id="review"
+          class="bg-neutral-secondary-medium border h-60 border-default-medium text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+          placeholder="{{'review.write'|translate}}"
+          required
+          formControlName="review"
+        ></textarea>
+      </div>
+      <validation-messages [controls]="reviewPosting.get('review')"></validation-messages>
+
+      <div class="mb-5">
+        <label for="rating" class="block mb-2.5 text-sm font-medium">{{'review.rateTitle'|translate}}</label>
+        <input
+          type="number"
+          id="rating"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+          placeholder="{{'review.rate'|translate}}"
+          required
+          formControlName="rating"
+        />
+      </div>
+      <validation-messages [controls]="reviewPosting.get('rating')"></validation-messages>
+      <button
+        type="submit"
+        class="text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        [disabled]="reviewPosting.invalid"
+        [class.bg-gray]="reviewPosting.invalid"
+      >
+        {{'review.submit'|translate}}
+      </button>
+    </form>
+  </div>
+  <div class="col-span-12 md:col-span-8">
+    @for (review of reviewList(); track review._id) {
+      <app-review-item
+        [review]="review"
+        [decodedTokenId]="decodedTokenId"
+        (reviewId)="editUserReview($event.reviewId, $event.productId)"
+      ></app-review-item>
+      @if (reviewId != null && review._id == reviewId && isOpened()) {
+        <div>
+          <h2 class="text-xl text-main font-bold ms-8">Edit Your Review</h2>
+          <form
+            [formGroup]="reviewEdit"
+            (ngSubmit)="submitForm()"
+            class="text-black font-semibold font-libre mt-5 ms-8"
+          >
+            <div class="mb-5">
+              <label for="review" class="block mb-2.5 text-sm font-medium">{{'review.review'|translate}}</label>
+              <textarea
+                type="review"
+                id="review"
+                class="bg-neutral-secondary-medium border h-60 border-default-medium text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                placeholder="{{'review.write'|translate}}"
+                required
+                formControlName="review"
+              ></textarea>
+            </div>
+            <validation-messages [controls]="reviewPosting.get('review')"></validation-messages>
+
+            <div class="mb-5">
+              <label for="rating" class="block mb-2.5 text-sm font-medium">{{'review.rateTitle'|translate}}</label>
+              <input
+                type="number"
+                id="rating"
+                class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                placeholder="{{'review.rate'|translate}}"
+                required
+                formControlName="rating"
+              />
+            </div>
+            <validation-messages [controls]="reviewPosting.get('rating')"></validation-messages>
+            <button
+              type="submit"
+              class="text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+              [disabled]="reviewEdit.invalid"
+              [class.bg-gray]="reviewEdit.invalid"
+            >
+              {{'review.edit'|translate}}
+            </button>
+          </form>
+        </div>
+      }
+    }
+  </div>
+</section>

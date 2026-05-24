@@ -1,0 +1,17 @@
+<div class="grid grid-cols-12 mt-10">
+  <div class="text-main col-span-12 md:col-span-4">
+    <h2 class="font-bold font-DM text-3xl">{{'home.category'|translate}}</h2>
+    <p class="text-xl font-libre">
+      {{'home.para'|translate}}
+    </p>
+  </div>
+  <div class="col-span-12 md:col-span-8">
+    <owl-carousel-o [options]="customOptions">
+      @for (category of categoriesList; track category._id) {
+        <ng-template carouselSlide>
+          <app-category-card [categories]="category"></app-category-card>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</div>

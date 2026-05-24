@@ -1,0 +1,31 @@
+<section class="container mx-auto">
+  <section class="mt-15 pt-5">
+    <h1 class="text-main font-libre text-xl">{{'navbar.profile'|translate}}</h1>
+    <div class="bg-start p-5 rounded shadow-xl">
+      <div class="flex space-x-2">
+        <h2>{{'profile.name'|translate}}:</h2>
+        <p>{{ userData.name }}</p>
+      </div>
+      <div class="flex space-x-2"></div>
+    </div>
+  </section>
+  <section class="mt-5 bg-start rounded shadow-xl p-5">
+    <div class="flex items-center space-x-2">
+      <h2>{{'profile.address'|translate}}</h2>
+      <button
+        (click)="openComponent()"
+        class="text-main font-bold font-libre p-2 cursor-pointer hover:text-dark"
+      >
+        {{'profile.add'|translate}} +
+      </button>
+    </div>
+    <div class="grid grid-cols-1 gap-5">
+      @for (address of addresses(); track address._id) {
+        <app-address-card [userAddress]="address" (deleteItem)="deleteUserAddress($event)"></app-address-card>
+      }
+    </div>
+  </section>
+</section>
+<ng-container
+  *ngComponentOutlet="userAddressComponent; inputs: { closeForm: closeComponent.bind(this), address:addresses }"
+></ng-container>

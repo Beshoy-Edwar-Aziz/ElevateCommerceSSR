@@ -1,0 +1,226 @@
+<nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between m-auto p-4">
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-6 h-6"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M5 7h14M5 12h14M5 17h14"
+        />
+      </svg>
+    </button>
+    <div
+      class="hidden w-full md:flex md:justify-between md:w-full text-main font-libre font-semibold"
+      id="navbar-default"
+    >
+      <a>
+        <h1 class="text-main text-2xl font-bold cursor-pointer" routerLink="/user/home">Elevate Commerce</h1>
+      </a>
+      @if (layout == 'user') {
+        <ul
+          class="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8  md:mt-0 md:border-0 md:bg-neutral-primary"
+        >
+          <li>
+            <a routerLink="home" routerLinkActive="text-fg-brand" class="block hover:text-fg-brand"
+              >{{'navbar.home'|translate}}</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="product"
+              routerLinkActive="md:text-fg-brand"
+              class="block hover:text-fg-brand"
+              >{{'navbar.products'|translate}}</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="brand"
+              routerLinkActive="md:text-fg-brand"
+              class="block hover:text-fg-brand"
+              >{{'navbar.brands'|translate}}</a
+            >
+          </li>
+        </ul>
+        <ul class="flex flex-col md:flex-row  gap-4">
+          <li (click)="openDrawer()" class="relative">
+            <span
+              #openCart
+              class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre"
+              data-drawer-target="drawer-navigation"
+              data-drawer-show="drawer-navigation"
+            >
+              {{'navbar.cart'|translate}} <i class="fa-solid fa-cart-shopping"></i>
+              <div
+                class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-buffer rounded-full -top-3 -end-3"
+              >
+                {{ cartNavBarCounter() }}
+              </div>
+            </span>
+          </li>
+          <li>
+            <a class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre" routerLink="/user/wishlist">
+              {{'navbar.wishlist'|translate}}
+              <i class="fa-solid fa-heart"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/profile/"
+              routerLinkActive="text-fg-brand"
+              class="block font-semibold cursor-pointer font-libre text-main hover:text-fg-brand transition-all duration-200"
+              aria-current="page"
+              >{{'navbar.profile'|translate}} <i class="fa-solid fa-circle-user"></i
+            ></a>
+          </li>
+          <app-language></app-language>
+          <li>
+            <a
+              (click)="logOut()"
+              routerLinkActive="text-fg-brand"
+              class="block font-semibold cursor-pointer hover:text-fg-brand transition-all duration-200"
+              aria-current="page"
+              >{{'navbar.logout'|translate}}</a
+            >
+          </li>
+        </ul>
+        @defer (on interaction(openCart)) {
+          <div
+            #drawer
+            id="drawer-navigation"
+            class="fixed top-0 left-0 z-40 w-full md:w-1/2 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft border-e border-default"
+            tabindex="-1"
+            aria-labelledby="drawer-navigation-label"
+          >
+            <div class="border-b border-default pb-4 px-6 flex items-center">
+              <div class="flex gap-4">
+                <span class="font-extrabold text-3xl">
+                  <i class="fa-solid fa-shopping-cart"></i
+                ></span>
+                <p class="font-libre text-2xl">{{'cart.mycart'|translate}}</p>
+              </div>
+              <button
+                (click)="openDrawer()"
+                type="button"
+                data-drawer-hide="drawer-navigation"
+                aria-controls="drawer-navigation"
+                class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18 17.94 6M18 18 6.06 6"
+                  />
+                </svg>
+                <span class="sr-only">Close menu</span>
+              </button>
+            </div>
+            <div class="py-5 overflow-y-auto">
+              <app-cart-list (close)="closeDrawer()"></app-cart-list>
+            </div>
+          </div>
+        }
+      } @else if (layout == 'auth') {
+        <ul class="flex flex-col md:flex-row gap-5">
+          <li>
+            <a
+              routerLink="login"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              aria-current="page"
+              >SignIn</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="register"
+              routerLinkActive="text-fg-brand"
+              class="block transition-all duration-100 hover:text-fg-brand"
+              >SignUp</a
+            >
+          </li>
+          <app-language></app-language>
+        </ul>
+      } @else if (layout == 'orders') {
+        <ul class="flex flex-col md:flex-row gap-5">
+          <li>
+            <a
+              routerLink="/user/home"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              aria-current="page"
+              >{{'navbar.home'|translate}}</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/user/product"
+              routerLinkActive="text-fg-brand"
+              class="block transition-all duration-100 hover:text-fg-brand"
+              >{{'navbar.products'|translate}}</a
+            >
+          </li>
+        </ul>
+      } @else if (layout=='profile'){
+         <ul class="flex flex-col md:flex-row  gap-5">
+          <li>
+            <a
+              routerLink="/user/home"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              aria-current="page"
+              >{{'navbar.home'|translate}}</a
+            >
+          </li>
+
+            <li>
+               <a
+              routerLink="/profile/userOrders"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              aria-current="page"
+              >{{'navbar.orders'|translate}}</a
+            >
+            </li>
+            <li>
+               <a
+              routerLink="/profile/userInfo"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              aria-current="page"
+              >{{'navbar.profile'|translate}}</a
+            >
+            </li>
+            <app-language></app-language>
+        </ul>
+      }
+    </div>
+  </div>
+</nav>

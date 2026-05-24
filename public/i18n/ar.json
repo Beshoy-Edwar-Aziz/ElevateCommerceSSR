@@ -1,0 +1,101 @@
+{
+   "order":{
+    "details":"تفاصيل العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "city": "المدينة",
+    "payWithVisa":"الدفع عن طريق الفيزا",
+    "payWithCash": "الدفع كاش",
+    "shippingAddress":"العنوان",
+     "invoice": "الفاتورة",
+    "billedTo": "مستخرجة الي",
+    "dateOfCreation": "تاريخ استخرجها",
+    "description": "الوصف",
+    "qty": "الكمية",
+    "price": "السعر",
+    "total":"الاجمالي",
+    "continue":"استكمل التسوق"
+  },
+  "navbar":{
+    "home":"الرئيسية",
+    "products":"المنتجات",
+    "brands": "البرندات",
+    "cart":"السلة",
+    "profile":"بروفايل",
+    "logout":"تسجيل خروج",
+    "wishlist":"قائمة الامنيات",
+    "orders":"المشتريات"
+  },
+  "home":{
+    "shop":"تسوق احدث المنتجات لدينا",
+    "welcome":"مرحبا بكم في Elevate Commerce",
+    "greatest":"تسوق احدث واجدد المنتجات",
+    "para":"تسوق واشتري احدث واجدد المنتجات من ملابس واجهزة الكترونية",
+    "shopBtn":"تسوق احدث المنتجات لدينا",
+    "safe":"امان",
+    "delivered":"نصلك اينما كنت",
+    "personal":"متفصل لك",
+    "no1":"رقم واحد في الشرق الاوسط",
+    "pace":"تسوق كما تريد",
+    "category":"الفئات المتوفرة"
+  },
+  "product":{
+    "search":"...بحث",
+    "title":"تسوق المنتجات",
+    "add":"اضف الي السلة",
+    "description":"الوصف",
+    "similar":"اظهر منتجات مماثلة",
+    "noprod":"لا توجد منتجات متاحة لدينا"
+  },
+  "review":{
+    "title":"المراجعات",
+    "review":"المراجعة",
+    "write":"...اكتب مراجعتك",
+    "rate":"اكتب تقييمك من 1 الي 5 ",
+    "rateTitle":"تقييمك",
+    "submit":"اضف",
+    "edit":"عدل"
+  },
+   "wishlist":{
+    "mywish":"قائمة امنياتي",
+    "noWishList":"لا توجد امنيات لديك قط"
+  },
+   "brand":{
+    "mybrand":"البراندات المتاحة",
+     "nobrand":"لا يوجد لدينا براندات متاحة"
+  },
+  "cart":{
+    "mycart":"السلة",
+    "totalPrice":"الاجمالي",
+     "cartEmpty": "السلة خالية",
+      "emptify": "اخلاء السلة",
+      "proceed":"التوجة الي الشراء",
+      "remove":"حذف"
+  },
+  "footer":{
+    "discover":"استكشف",
+    "follow":"تابعنا",
+    "legal":"قوانينا",
+    "elevate":"منتجات elevate",
+    "gitHub":"جيت هب",
+    "LinkedIn":"لينكدان",
+    "privacy": "سياستنا",
+    "terms":"القوانين والاحكام",
+    "rights":"جميع الحقوق محفوظة ل بيشوي ادوار عزيز @ 2026"
+  },
+  "profile":{
+    "orderPlaced":"تم طلب المشتري في",
+    "shippedTo":"تم شحنة الي",
+    "order":"الطلب",
+    "orderAvailable":"لا توجد مشتريات متاحة قط",
+    "name":"الاسم",
+    "address":"العنوان",
+    "add":"اضف",
+    "remove":"احذف",
+     "addUserAddress":"اضف عنوانك",
+    "addressTitle":"اسم العنوان",
+    "addressDetails":"تفاصيل العنوان",
+    "phoneNumber":"رقم الهاتف",
+    "city":"المدينة",
+    "addAddress":"اضف العنوان"
+  }
+}

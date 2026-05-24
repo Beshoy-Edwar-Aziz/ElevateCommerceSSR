@@ -1,0 +1,104 @@
+<section>
+  <div class="container mx-auto font-libre text-main">
+    <div class="grid grid-cols-12 mt-25 gap-5">
+      <div class="col-span-12 md:col-span-4">
+        <owl-carousel-o [options]="customOptions">
+          @for (img of product()?.images; track $index) {
+            <ng-template carouselSlide>
+              <img [src]="img" [alt]="img" [title]="img" />
+            </ng-template>
+          }
+        </owl-carousel-o>
+        <owl-carousel-o [options]="thumbOptions">
+          @for (img of product()?.images; track $index) {
+            <ng-template carouselSlide>
+              <img [src]="img" class="mt-4" [alt]="img" [title]="img" />
+            </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+
+      <div class="col-span-12 md:col-span-8">
+        <h2 class="text-xl text-main font-bold font-libre">{{ product()?.title }}</h2>
+        <p class="my-5">
+          By <span class="font-libre text-link uppercase">{{ product()?.brand?.name }}</span>
+        </p>
+        <div class="flex flex-col md:flex-row justify-between my-4">
+          <p class="text-xl font-bold">{{ product()?.price | currency: 'EGP' }}</p>
+          <div class="flex items-center">
+            <i class="fa-solid fa-star" [class.text-yellow-200]="product().ratingsAverage >= 1"></i>
+            <i class="fa-solid fa-star" [class.text-yellow-200]="product().ratingsAverage >= 2"></i>
+            <i class="fa-solid fa-star" [class.text-yellow-200]="product().ratingsAverage >= 3"></i>
+            <i class="fa-solid fa-star" [class.text-yellow-200]="product().ratingsAverage >= 4"></i>
+            <i class="fa-solid fa-star" [class.text-yellow-200]="product().ratingsAverage == 5"></i>
+            <span class="">{{ product()?.ratingsAverage }}</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-10">
+          <div class="col-span-10">
+            <button
+              (click)="addToCart()"
+              class="bg-link text-white w-screen md:w-full py-3 rounded cursor-pointer hover:bg-white hover:text-link hover:border transition duration-200"
+            >
+              {{'product.add'|translate}}
+            </button>
+            <button
+              class="border rounded mt-2 w-screen md:w-full py-3 cursor-pointer hover:bg-link hover:text-white"
+            >
+             {{'product.similar'|translate}}
+            </button>
+            <h2 class="font-libre font-bold mt-3 text-2xl underline">{{'product.description'|translate}}:</h2>
+            <p class="font-libre font-bold text">{{ product()?.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mt-5 pb-5 bg-linear-to-b from-start to-end" #open>
+  @defer (on viewport(open)) {
+    <app-review-list [productId]="productId"></app-review-list>
+  } @placeholder {
+    <div
+      role="status"
+      class="max-w-md p-4 border border-default divide-y divide-default rounded-base shadow-xs animate-pulse md:p-6"
+    >
+      <div class="flex items-center justify-between pb-4">
+        <div>
+          <div class="h-2.5 bg-neutral-quaternary rounded-full w-24 mb-2.5"></div>
+          <div class="w-32 h-2 bg-neutral-quaternary rounded-full"></div>
+        </div>
+        <div class="h-2.5 bg-default rounded-full w-12"></div>
+      </div>
+      <div class="flex items-center justify-between py-4">
+        <div>
+          <div class="h-2.5 bg-neutral-quaternary rounded-full w-24 mb-2.5"></div>
+          <div class="w-32 h-2 bg-neutral-quaternary rounded-full"></div>
+        </div>
+        <div class="h-2.5 bg-default rounded-full w-12"></div>
+      </div>
+      <div class="flex items-center justify-between py-4">
+        <div>
+          <div class="h-2.5 bg-neutral-quaternary rounded-full w-24 mb-2.5"></div>
+          <div class="w-32 h-2 bg-neutral-quaternary rounded-full"></div>
+        </div>
+        <div class="h-2.5 bg-default rounded-full w-12"></div>
+      </div>
+      <div class="flex items-center justify-between py-4">
+        <div>
+          <div class="h-2.5 bg-neutral-quaternary rounded-full w-24 mb-2.5"></div>
+          <div class="w-32 h-2 bg-neutral-quaternary rounded-full"></div>
+        </div>
+        <div class="h-2.5 bg-default rounded-full w-12"></div>
+      </div>
+      <div class="flex items-center justify-between py-4">
+        <div>
+          <div class="h-2.5 bg-neutral-quaternary rounded-full w-24 mb-2.5"></div>
+          <div class="w-32 h-2 bg-neutral-quaternary rounded-full"></div>
+        </div>
+        <div class="h-2.5 bg-default rounded-full w-12"></div>
+      </div>
+      <span class="sr-only">Loading...</span>
+    </div>
+  }
+</section>

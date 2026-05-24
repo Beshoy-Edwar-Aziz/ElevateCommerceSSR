@@ -1,0 +1,101 @@
+{
+  "order":{
+    "details":"Details",
+    "phoneNumber": "Phone Number",
+    "city": "City",
+    "payWithVisa":"Pay With Visa",
+    "payWithCash": "Pay in Cash",
+    "shippingAddress":"Shipping Address",
+    "invoice": "Invoice",
+    "billedTo": "Billed To",
+    "dateOfCreation": "Date of Creation",
+    "description": "Description",
+    "qty": "QTY",
+    "price": "Price",
+    "total":"Total",
+    "continue":"Continue Shopping"
+  },
+  "navbar":{
+    "home":"Home",
+    "products":"Products",
+    "brands": "Brands",
+    "cart": "Cart",
+    "logout":"Logout",
+    "profile":"Profile",
+    "wishlist": "WishList",
+    "orders":"Orders"
+  },
+  "home":{
+    "shop":"Shop Our Latest Products",
+    "welcome":"Welcome to Elevate Commerce",
+    "greatest":"Shop The Latest and Greatest",
+    "para":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam, illum necessitatibus ipsa ratione autem illo.",
+    "shopBtn":"Shop Our Latest Collection",
+    "safe":"Safe",
+    "delivered":"Delivered Everywhere",
+    "personal":"Personally Curated",
+    "no1":"No.1 in Middle East",
+    "pace":"Shope At Your Pace",
+    "category":"Our Featured Categories"
+  },
+  "product":{
+    "search":"search",
+    "title":"Shop Your Product",
+    "add":"Add To Cart",
+    "description":"Description",
+    "similar":"View Similar Products",
+    "noprod":"No Products Available"
+  },
+  "review":{
+    "title":"Reviews",
+    "review":"Your Reviews",
+    "write":"Write Your Review...",
+    "rate":"Rate from 1 to 5",
+    "rateTitle":"Your Rating",
+    "submit":"Submit",
+    "edit":"Edit"
+  },
+  "wishlist":{
+    "mywish":"My WishList",
+    "noWishList":"No WishList Available"
+  },
+  "brand":{
+    "mybrand":"Our Brands",
+    "nobrand":"No Brands Available"
+  },
+  "cart":{
+    "mycart":"My Cart",
+    "totalPrice":"Total Price",
+    "cartEmpty": "Cart is Empty",
+    "emptify": "Empty Cart",
+    "proceed":"Proceed To Checkout",
+    "remove":"Remove"
+  },
+   "footer":{
+    "discover":"Discover",
+    "follow":"Follow Us",
+    "legal":"Legal",
+    "elevate":"Elevate Products",
+    "gitHub":"Github",
+    "LinkedIn":"LinkedIn",
+    "privacy": "Privacy Policy",
+    "terms":"Terms & Conditions",
+    "rights":"All Rights Reserved For Beshoy Edwar Aziz @2026"
+  },
+  "profile":{
+    "orderPlaced":"Order Placed",
+    "shippedTo":"Shipped To",
+    "order":"Order",
+    "orderAvailable":"No Orders Available",
+    "name":"Name",
+    "address":"Address",
+    "add":"Add",
+    "remove":"Remove",
+    "addUserAddress":"Add User Address",
+    "addressTitle":"Address Title",
+    "addressDetails":"Address Details",
+    "phoneNumber":"Phone Number",
+    "city":"City",
+    "addAddress":"Add Address"
+  }
+}

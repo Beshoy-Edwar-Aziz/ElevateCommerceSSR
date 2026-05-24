@@ -25,7 +25,13 @@
               }
             ],
             "styles": [
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
+
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -38,6 +44,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "with": "./src/enviroments/enviroment.ts",
+                  "replace": "./src/enviroments/enviroment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",

@@ -1,0 +1,20 @@
+<div class="bg-main p-5 rounded text-start font-libre">
+  <h2 class="border-b">{{'profile.name'|translate}}</h2>
+  <span>{{ userAddress.name }}</span>
+  <div>
+    <h3 class="border-b">{{'order.details'|translate}}</h3>
+    <p>{{ userAddress.details }}</p>
+    <h3 class="border-b">{{'order.phoneNumber'|translate}}</h3>
+    <p>{{ userAddress.phone }}</p>
+    <h3 class="border-b">{{'order.city'|translate}}</h3>
+    <p>{{ userAddress.city }}</p>
+  </div>
+  <div>
+    <button
+    (click)="deleteAddress()"
+     class="mt-2 border rounded p-3 text-white font-libre font-bold cursor-pointer hover:bg-dark">
+      <i class="fa-solid fa-trash"></i>
+      {{'profile.remove'|translate}}
+    </button>
+  </div>
+</div>

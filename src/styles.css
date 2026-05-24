@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@theme{
+  --color-main: rgba(114,106,99);
+  --font-libre:"Libre Franklin", sans-serif;
+  --color-link:#B7786B;
+  --font-DM:"DM Serif Display",serif;
+  --color-start:#FEFDFC;
+  --color-end:#FAF5EC;
+  --color-footer:#6B714B;
+}
