@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ecommerceProject": "node dist/ecommerceProject/server/server.mjs",
-    "vercel-build": "npm run build:ssr"
+    "vercel-build": "ng build"
   },
   "private": true,
   "packageManager": "npm@11.9.0",
