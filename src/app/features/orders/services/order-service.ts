@@ -14,7 +14,8 @@ export class OrderService {
     })
   }
   createVisaCheckout(cartId:string,shippingAddress:{details:string,phone:string,city:string}):Observable<any>{
-    return this.httpClient.post(enviroments.baseurl+'orders/checkout-session/'+cartId+`?url=https://elevatecommercessr.vercel.app/${'#'}/`,{
+    const successUrl = encodeURIComponent('https://elevatecommercessr.vercel.app/#/')
+    return this.httpClient.post(`${enviroments.baseurl}'orders/checkout-session/'${cartId}?url=${successUrl}`,{
       shippingAddress
     })
   }
