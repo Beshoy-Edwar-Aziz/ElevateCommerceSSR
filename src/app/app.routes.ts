@@ -27,11 +27,11 @@ export const routes: Routes = [
     canActivate: [verifiedAccessGuard],
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
-      { path: 'register', component: Register },
-      { path: 'login', component: Login },
-      { path: 'forgotPassword', component: ForgotPassword },
-      { path: 'verify', component: VerficationCode },
-      { path: 'resetPassword', component: ResetPassword },
+      { path: 'register', component: Register, title: 'Register' },
+      { path: 'login', component: Login, title: 'Login' },
+      { path: 'forgotPassword', component: ForgotPassword, title: 'Forgot Password' },
+      { path: 'verify', component: VerficationCode, title: 'Verification' },
+      { path: 'resetPassword', component: ResetPassword, title: 'Reset Your Password' },
     ],
   },
   {
@@ -40,11 +40,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: Home },
-      { path: 'product', component: ProductList },
+      { path: 'home', component: Home, title: 'Home' },
+      { path: 'product', component: ProductList, title: 'Products' },
       { path: 'productDetail/:id', component: ProductDetails },
-      { path: 'brand', component: Brand },
-      { path: 'wishlist', component: WishList },
+      { path: 'brand', component: Brand, title: 'Brands' },
+      { path: 'wishlist', component: WishList, title: 'WishList' },
     ],
   },
   {
@@ -54,10 +54,15 @@ export const routes: Routes = [
       import('./features/profile/components/profile/profile').then((m) => m.Profile),
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'userOrders' },
-      { path: 'userOrders', component: UserOrders },
-      { path: 'userInfo', component: UserInfo },
+      { path: 'userOrders', component: UserOrders, title: 'Your Orders' },
+      { path: 'userInfo', component: UserInfo, title: 'User Profile' },
     ],
   },
-  { path: 'allorders', component: AllOrders, canActivate: [authGuard, ordersGuard] },
-  { path: '**', component: NotFound },
+  {
+    path: 'allorders',
+    component: AllOrders,
+    title: 'Checkout',
+    canActivate: [authGuard, ordersGuard],
+  },
+  { path: '**', component: NotFound, title: 'Not Found' },
 ];

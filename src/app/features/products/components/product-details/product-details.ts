@@ -7,14 +7,15 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../../cart/services/cart-service';
 import { UpdateCartNumbersService } from '../../../cart/services/update-cart-numbers-service';
 import { ReviewList } from '../../../reviews/components/review-list/review-list';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ToastrService } from 'ngx-toastr';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CurrencyPipe, CarouselModule, ReviewList, ReactiveFormsModule,TranslatePipe],
+  imports: [CurrencyPipe, CarouselModule, ReviewList, ReactiveFormsModule, TranslatePipe],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css',
 })
@@ -24,19 +25,24 @@ export class ProductDetails implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly updateCartNumber = inject(UpdateCartNumbersService);
   private readonly toastrService = inject(ToastrService);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
   private destroy = inject(DestroyRef);
   productId!: string;
   product = signal<SpecifiedProduct>({} as SpecifiedProduct);
   getProductDetails(id: string) {
-    this.productService.getSpecificProduct(id).pipe(takeUntilDestroyed(this.destroy)).subscribe({
-      next: ({ data }) => {
-        console.log(data);
-        this.product.set(data);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.productService
+      .getSpecificProduct(id)
+      .pipe(takeUntilDestroyed(this.destroy))
+      .subscribe({
+        next: ({ data }) => {
+          console.log(data);
+          this.product.set(data);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   addToCart() {
@@ -45,14 +51,25 @@ export class ProductDetails implements OnInit {
         console.log(res);
         this.updateCartNumber.cartDetails.emit(res);
         this.cartService.cartCounter.set(res.numOfCartItems);
-        this.toastrService.success(res.message,"Success");
+        this.toastrService.success(res.message, 'Success');
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
-
+  updateMetaAndTitle(product: SpecifiedProduct) {
+    this.title.setTitle(product.title);
+    this.meta.updateTag({ property: 'og:title', content: product.title });
+    this.meta.updateTag({ property: 'og:description', content: product.description });
+    this.meta.updateTag({ property: 'og:image', content: product.imageCover });
+    this.meta.updateTag({ property: 'og:type', content: 'product' });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: `https://elevatecommercessr.vercel.app/#/user/productDetail/${product._id}`,
+    });
+    this.meta.updateTag({ name: 'description', content: product.description });
+  }
 
   ngOnInit(): void {
     this.router.paramMap.subscribe({
@@ -64,6 +81,7 @@ export class ProductDetails implements OnInit {
       },
     });
     this.getProductDetails(this.productId);
+    this.updateMetaAndTitle(this.product());
   }
 
   customOptions: OwlOptions = {
@@ -93,7 +111,7 @@ export class ProductDetails implements OnInit {
       },
     },
     nav: true,
-    rtl:true
+    rtl: true,
   };
   thumbOptions: OwlOptions = {
     loop: true,
@@ -122,8 +140,8 @@ export class ProductDetails implements OnInit {
       },
     },
     nav: false,
-    rtl:true,
-    skip_validateItems:true,
-    margin:4
+    rtl: true,
+    skip_validateItems: true,
+    margin: 4,
   };
 }
