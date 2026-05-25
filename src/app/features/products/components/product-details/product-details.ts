@@ -36,8 +36,8 @@ export class ProductDetails implements OnInit {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe({
         next: ({ data }) => {
-          console.log(data);
           this.product.set(data);
+           this.updateMetaAndTitle(this.product());
         },
         error: (err) => {
           console.log(err);
@@ -81,7 +81,7 @@ export class ProductDetails implements OnInit {
       },
     });
     this.getProductDetails(this.productId);
-    this.updateMetaAndTitle(this.product());
+
   }
 
   customOptions: OwlOptions = {
