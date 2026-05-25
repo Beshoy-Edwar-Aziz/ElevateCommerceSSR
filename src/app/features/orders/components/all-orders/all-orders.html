@@ -89,7 +89,7 @@
       @for (cart of finalCartList().data?.products; track cart.product._id) {
         <div class="grid grid-cols-12 my-3 gap-1">
           <div class="relative">
-            <img [src]="cart.product.imageCover" class="w-full me-1 col-span-2 rounded" alt="" />
+            <img [src]="cart.product.imageCover" class="w-full me-1 col-span-2 rounded" [alt]="cart.product.title" />
             <div
               class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-buffer rounded-full -top-3 -end-1"
             >
@@ -97,7 +97,7 @@
             </div>
           </div>
           <p class="col-span-9">{{ cart.product.title }}</p>
-          <span class="col-span-1">{{ cart.price | currency: 'EGP' }}</span>
+          <span class="col-span-10 md:col-span-1">{{ cart.price | currency: 'EGP' }}</span>
         </div>
       } @empty {
         <h2 class="text-main">Order is Empty</h2>
