@@ -38,7 +38,7 @@
         <ul
           class="font-semibold flex flex-col pb-2 space-y-1 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 "
         >
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="home"
               routerLinkActive="text-fg-brand"
@@ -46,7 +46,7 @@
               >{{ 'navbar.home' | translate }}</a
             >
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="product"
               routerLinkActive="text-fg-brand"
@@ -54,7 +54,7 @@
               >{{ 'navbar.products' | translate }}</a
             >
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="brand"
               routerLinkActive="text-fg-brand"
@@ -64,7 +64,7 @@
           </li>
         </ul>
         <ul class="flex flex-col md:flex-row gap-4">
-          <li (click)="openDrawer()" class="relative" data-collapse-toggle="navbar-default">
+          <li (click)="openDrawer()" class="relative" >
             <span
               #openCart
               class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre"
@@ -79,7 +79,7 @@
               </div>
             </span>
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre"
               routerLink="/user/wishlist"
@@ -89,7 +89,7 @@
               <i class="fa-solid fa-heart"></i>
             </a>
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/profile/"
               routerLinkActive="text-fg-brand"
@@ -158,7 +158,7 @@
         }
       } @else if (layout == 'auth') {
         <ul class="flex flex-col md:flex-row gap-5">
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="login"
               routerLinkActive="text-fg-brand"
@@ -167,7 +167,7 @@
               >SignIn</a
             >
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="register"
               routerLinkActive="text-fg-brand"
@@ -179,7 +179,7 @@
         </ul>
       } @else if (layout == 'orders') {
         <ul class="flex flex-col md:flex-row gap-5">
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/user/home"
               routerLinkActive="text-fg-brand"
@@ -188,7 +188,7 @@
               >{{ 'navbar.home' | translate }}</a
             >
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/user/product"
               routerLinkActive="text-fg-brand"
@@ -199,7 +199,7 @@
         </ul>
       } @else if (layout == 'profile') {
         <ul class="flex flex-col md:flex-row gap-5">
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/user/home"
               routerLinkActive="text-fg-brand"
@@ -209,7 +209,7 @@
             >
           </li>
 
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/profile/userOrders"
               routerLinkActive="text-fg-brand"
@@ -218,7 +218,7 @@
               >{{ 'navbar.orders' | translate }}</a
             >
           </li>
-          <li data-collapse-toggle="navbar-default">
+          <li >
             <a
               routerLink="/profile/userInfo"
               routerLinkActive="text-fg-brand"
