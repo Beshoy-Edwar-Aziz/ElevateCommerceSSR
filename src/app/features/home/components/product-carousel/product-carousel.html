@@ -13,7 +13,34 @@
     <owl-carousel-o [options]="customOptions">
       @for (product of productData; track product._id) {
         <ng-template carouselSlide>
-          <product-card [product]="product" [wishList]="wishListProds()" (productId)="addProductToCart($event)" (productIdForWishList)="addProductToWishList($event)"></product-card>
+          @defer (on viewport) {
+            <product-card
+              [product]="product"
+              [wishList]="wishListProds()"
+              (productId)="addProductToCart($event)"
+              (productIdForWishList)="addProductToWishList($event)"
+            ></product-card>
+          } @placeholder (minimum 600ms) {
+            <div class="mx-3">
+              <div
+                role="status"
+                class="flex items-center justify-center h-56 max-w-sm bg-neutral-quaternary rounded-base animate-pulse"
+              >
+                <i class="fa-solid fa-image text-3xl"></i>
+                <span class="sr-only">Loading...</span>
+              </div>
+
+              <div role="status" class="mt-5 max-w-sm animate-pulse">
+                <div class="h-2.5 bg-neutral-quaternary rounded-full w-48 mb-4"></div>
+                <div class="h-2 bg-neutral-quaternary rounded-full max-w-[360px] mb-2.5"></div>
+                <div class="h-2 bg-neutral-quaternary rounded-full mb-2.5"></div>
+                <div class="h-2 bg-neutral-quaternary rounded-full max-w-[330px] mb-2.5"></div>
+                <div class="h-2 bg-neutral-quaternary rounded-full max-w-[300px] mb-2.5"></div>
+                <div class="h-2 bg-neutral-quaternary rounded-full max-w-[360px]"></div>
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          }
         </ng-template>
       }
     </owl-carousel-o>

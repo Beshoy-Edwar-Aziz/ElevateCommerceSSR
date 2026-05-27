@@ -1,5 +1,4 @@
-import { WishListService } from './../../../wishlist/services/wish-list-service';
-import { Component, computed, ElementRef, EventEmitter, inject, Input, Output, signal, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { productsInterface } from '../../models/products-interface';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -11,7 +10,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './product-card.css',
 })
 export class ProductCard {
-  private readonly wishListService = inject(WishListService);
   @Input({ required: false }) product!: productsInterface;
   @Input() wishList!:productsInterface[];
   @Output() productId = new EventEmitter<string>();
@@ -23,5 +21,8 @@ export class ProductCard {
   onAddToWishList(){
     this.productIdForWishList.emit(this.product._id);
 
+  }
+  isProducts(){
+    return this.product?this.wishList.some(item=>item._id===this.product._id):false;
   }
 }
