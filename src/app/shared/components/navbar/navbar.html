@@ -30,43 +30,48 @@
       id="navbar-default"
     >
       <a>
-        <h1 class="text-main text-2xl font-bold cursor-pointer" routerLink="/user/home">Elevate Commerce</h1>
+        <h1 class="text-main text-2xl font-bold cursor-pointer" routerLink="/user/home">
+          Elevate Commerce
+        </h1>
       </a>
       @if (layout == 'user') {
         <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8  md:mt-0 md:border-0 md:bg-neutral-primary"
+          class="font-semibold flex flex-col pb-2 space-y-1 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 "
         >
-          <li>
-            <a routerLink="home" routerLinkActive="text-fg-brand" class="block hover:text-fg-brand"
-              >{{'navbar.home'|translate}}</a
+          <li data-collapse-toggle="navbar-default">
+            <a
+              routerLink="home"
+              routerLinkActive="text-fg-brand"
+              class="block hover:text-fg-brand"
+              >{{ 'navbar.home' | translate }}</a
             >
           </li>
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="product"
-              routerLinkActive="md:text-fg-brand"
+              routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
-              >{{'navbar.products'|translate}}</a
+              >{{ 'navbar.products' | translate }}</a
             >
           </li>
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="brand"
-              routerLinkActive="md:text-fg-brand"
+              routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
-              >{{'navbar.brands'|translate}}</a
+              >{{ 'navbar.brands' | translate }}</a
             >
           </li>
         </ul>
-        <ul class="flex flex-col md:flex-row  gap-4">
-          <li (click)="openDrawer()" class="relative">
+        <ul class="flex flex-col md:flex-row gap-4">
+          <li (click)="openDrawer()" class="relative" data-collapse-toggle="navbar-default">
             <span
               #openCart
               class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre"
               data-drawer-target="drawer-navigation"
               data-drawer-show="drawer-navigation"
             >
-              {{'navbar.cart'|translate}} <i class="fa-solid fa-cart-shopping"></i>
+              {{ 'navbar.cart' | translate }} <i class="fa-solid fa-cart-shopping"></i>
               <div
                 class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-main border-buffer rounded-full -top-3 -end-3"
               >
@@ -74,19 +79,23 @@
               </div>
             </span>
           </li>
-          <li>
-            <a class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre" routerLink="/user/wishlist">
-              {{'navbar.wishlist'|translate}}
+          <li data-collapse-toggle="navbar-default">
+            <a
+              class="text-main font-semibold hover:text-fg-brand cursor-pointer font-libre"
+              routerLink="/user/wishlist"
+
+            >
+              {{ 'navbar.wishlist' | translate }}
               <i class="fa-solid fa-heart"></i>
             </a>
           </li>
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="/profile/"
               routerLinkActive="text-fg-brand"
               class="block font-semibold cursor-pointer font-libre text-main hover:text-fg-brand transition-all duration-200"
               aria-current="page"
-              >{{'navbar.profile'|translate}} <i class="fa-solid fa-circle-user"></i
+              >{{ 'navbar.profile' | translate }} <i class="fa-solid fa-circle-user"></i
             ></a>
           </li>
           <app-language></app-language>
@@ -96,7 +105,7 @@
               routerLinkActive="text-fg-brand"
               class="block font-semibold cursor-pointer hover:text-fg-brand transition-all duration-200"
               aria-current="page"
-              >{{'navbar.logout'|translate}}</a
+              >{{ 'navbar.logout' | translate }}</a
             >
           </li>
         </ul>
@@ -113,7 +122,7 @@
                 <span class="font-extrabold text-3xl">
                   <i class="fa-solid fa-shopping-cart"></i
                 ></span>
-                <p class="font-libre text-2xl">{{'cart.mycart'|translate}}</p>
+                <p class="font-libre text-2xl">{{ 'cart.mycart' | translate }}</p>
               </div>
               <button
                 (click)="openDrawer()"
@@ -149,7 +158,7 @@
         }
       } @else if (layout == 'auth') {
         <ul class="flex flex-col md:flex-row gap-5">
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="login"
               routerLinkActive="text-fg-brand"
@@ -158,7 +167,7 @@
               >SignIn</a
             >
           </li>
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="register"
               routerLinkActive="text-fg-brand"
@@ -170,55 +179,55 @@
         </ul>
       } @else if (layout == 'orders') {
         <ul class="flex flex-col md:flex-row gap-5">
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="/user/home"
               routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
               aria-current="page"
-              >{{'navbar.home'|translate}}</a
+              >{{ 'navbar.home' | translate }}</a
             >
           </li>
-          <li>
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="/user/product"
               routerLinkActive="text-fg-brand"
               class="block transition-all duration-100 hover:text-fg-brand"
-              >{{'navbar.products'|translate}}</a
+              >{{ 'navbar.products' | translate }}</a
             >
           </li>
         </ul>
-      } @else if (layout=='profile'){
-         <ul class="flex flex-col md:flex-row  gap-5">
-          <li>
+      } @else if (layout == 'profile') {
+        <ul class="flex flex-col md:flex-row gap-5">
+          <li data-collapse-toggle="navbar-default">
             <a
               routerLink="/user/home"
               routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
               aria-current="page"
-              >{{'navbar.home'|translate}}</a
+              >{{ 'navbar.home' | translate }}</a
             >
           </li>
 
-            <li>
-               <a
+          <li data-collapse-toggle="navbar-default">
+            <a
               routerLink="/profile/userOrders"
               routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
               aria-current="page"
-              >{{'navbar.orders'|translate}}</a
+              >{{ 'navbar.orders' | translate }}</a
             >
-            </li>
-            <li>
-               <a
+          </li>
+          <li data-collapse-toggle="navbar-default">
+            <a
               routerLink="/profile/userInfo"
               routerLinkActive="text-fg-brand"
               class="block hover:text-fg-brand"
               aria-current="page"
-              >{{'navbar.profile'|translate}}</a
+              >{{ 'navbar.profile' | translate }}</a
             >
-            </li>
-            <app-language></app-language>
+          </li>
+          <app-language></app-language>
         </ul>
       }
     </div>
