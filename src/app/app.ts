@@ -1,10 +1,8 @@
 import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './shared/components/navbar/navbar';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
-import { deflate } from 'zlib';
 
 @Component({
   selector: 'app-root',

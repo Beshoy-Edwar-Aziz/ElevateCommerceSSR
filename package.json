@@ -6,9 +6,6 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "",
-    "test:watch": "",
-    "test:ci": "",
     "serve:ssr:ecommerceProject": "node dist/ecommerceProject/server/server.mjs",
     "vercel-build": "ng build"
   },

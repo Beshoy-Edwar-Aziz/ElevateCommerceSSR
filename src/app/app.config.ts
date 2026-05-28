@@ -15,9 +15,9 @@ import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes,withHashLocation(),withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
+    provideRouter(routes,withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideClientHydration(withEventReplay()),
-    provideToastr({ progressBar: true, timeOut: 2000 }),
+    provideToastr({ progressBar: true, timeOut: 2000,positionClass:'top-right' }),
     provideHttpClient(
       withFetch(),
       withInterceptors([loadInterceptor, authInterceptor, errorHandlerInterceptor]),

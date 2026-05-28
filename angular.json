@@ -31,7 +31,6 @@
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
-
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -85,7 +84,11 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "runner": "vitest",
+            "runnerConfig": true
+          }
         }
       }
     }
