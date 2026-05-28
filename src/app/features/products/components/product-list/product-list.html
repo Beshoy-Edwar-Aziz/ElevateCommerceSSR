@@ -32,14 +32,14 @@
   <h1 class="text-main font-extrabold text-4xl mb-3">{{ 'product.title' | translate }}</h1>
   <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
     @for (product of products() | search: inputValue; track product?._id) {
-      @defer (on viewport) {
+      @defer (hydrate on idle) {
         <product-card
           [product]="product"
           [wishList]="wishListProds()"
           (productId)="addProductToCart($event)"
           (productIdForWishList)="addProductToWishList($event)"
         ></product-card>
-      } @placeholder (minimum 600ms) {
+      } @placeholder(minimum 500ms) {
         <div>
           <div
             role="status"
@@ -60,10 +60,6 @@
           </div>
         </div>
       }
-    } @empty {
-      <h2 class="text-main col-span-12 text-center text-3xl font-bold my-25">
-        {{ 'product.noprod' | translate }}
-      </h2>
     }
   </div>
 </section>

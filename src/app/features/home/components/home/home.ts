@@ -8,10 +8,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CategoriesCarousel } from '../categories-carousel/categories-carousel';
 import { categoriesInterface } from '../../../categories/models/categories-interface';
 import { TranslatePipe } from '@ngx-translate/core';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  imports: [MainCarousel,ProductCarousel,CategoriesCarousel,TranslatePipe],
+  imports: [MainCarousel, ProductCarousel, CategoriesCarousel, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

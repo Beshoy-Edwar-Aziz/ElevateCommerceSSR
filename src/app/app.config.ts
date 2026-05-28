@@ -1,6 +1,5 @@
 import {
   ApplicationConfig,
-  importProvidersFrom,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
@@ -11,12 +10,12 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import { loadInterceptor } from './core/interceptors/load-interceptor';
 import { errorHandlerInterceptor } from './core/interceptors/error-handler-interceptor';
-import {provideTranslateService, provideTranslateLoader} from "@ngx-translate/core";
+import {provideTranslateService} from "@ngx-translate/core";
 import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes, withHashLocation(),withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
+    provideRouter(routes,withHashLocation(),withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideClientHydration(withEventReplay()),
     provideToastr({ progressBar: true, timeOut: 2000 }),
     provideHttpClient(

@@ -13,14 +13,14 @@
     <owl-carousel-o [options]="customOptions">
       @for (product of productData; track product._id) {
         <ng-template carouselSlide>
-          @defer (on viewport) {
+          @defer (hydrate on idle) {
             <product-card
               [product]="product"
               [wishList]="wishListProds()"
               (productId)="addProductToCart($event)"
               (productIdForWishList)="addProductToWishList($event)"
             ></product-card>
-          } @placeholder (minimum 600ms) {
+          } @placeholder(minimum 600ms){
             <div class="mx-3">
               <div
                 role="status"

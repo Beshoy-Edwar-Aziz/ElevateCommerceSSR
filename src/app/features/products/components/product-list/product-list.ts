@@ -32,6 +32,7 @@ export class ProductList implements OnInit {
   private readonly toastrService = inject(ToastrService);
   private readonly wishListService = inject(WishListService);
   products = signal<productsInterface[]>([]);
+  isLoading = signal<boolean>(false);
   wishListProds:WritableSignal<productsInterface[]> = signal<productsInterface[]>([]);
   inputValue:string = '';
   private destroy = inject(DestroyRef);
@@ -45,6 +46,9 @@ export class ProductList implements OnInit {
         },
         error: (err) => {
           console.log(err);
+        },
+        complete:()=>{
+          this.isLoading.set(true);
         }
       });
   }
