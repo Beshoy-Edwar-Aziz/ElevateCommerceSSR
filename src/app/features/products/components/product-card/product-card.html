@@ -2,7 +2,7 @@
 <div class="group transition-all relative duration-200 p-4 cursor-pointer">
       <div
         (click)="onAddToWishList()"
-        class="group absolute top-5 right-5 border-2 rounded-full w-10 h-10 grid justify-center items-center"
+        class="group absolute top-5 right-5 border-2 rounded-full w-10 h-10 grid justify-center items-center wish-btn"
       >
         <i class="fa-heart group-hover:text-main" [class.fa-solid]="isProducts()" [class.fa-regular]="!isProducts()"></i>
       </div>
@@ -17,7 +17,7 @@
   >
     <button
       (click)="onAddToCart()"
-      class="w-full text-2xl cursor-pointer p-2 border rounded-xl hover:text-white hover:bg-dark-strong transition-all duration-100"
+      class="w-full text-2xl cursor-pointer p-2 border rounded-xl hover:text-white hover:bg-dark-strong transition-all duration-100 prod-btn"
     >
       {{ 'product.add' | translate }}
     </button>

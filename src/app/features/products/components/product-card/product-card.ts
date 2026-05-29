@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, WritableSignal } from '@angular/core';
 import { productsInterface } from '../../models/products-interface';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -14,7 +14,6 @@ export class ProductCard {
   @Input() wishList!:productsInterface[];
   @Output() productId = new EventEmitter<string>();
   @Output() productIdForWishList = new EventEmitter<string>();
-
   onAddToCart() {
     this.productId.emit(this.product._id);
   }
@@ -22,7 +21,8 @@ export class ProductCard {
     this.productIdForWishList.emit(this.product._id);
 
   }
-  isProducts(){
-    return this.product?this.wishList.some(item=>item._id===this.product._id):false;
+  isProducts():boolean{
+    return this.product?this.wishList?.some(item=>item?._id===this.product?._id):false;
+
   }
 }

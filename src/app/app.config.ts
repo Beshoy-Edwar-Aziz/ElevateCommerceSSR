@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes,withHashLocation(),withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideClientHydration(withEventReplay()),
-    provideToastr({ progressBar: true, timeOut: 2000,positionClass:'top-right' }),
+    provideToastr({ progressBar: true, timeOut: 2000}),
     provideHttpClient(
       withFetch(),
       withInterceptors([loadInterceptor, authInterceptor, errorHandlerInterceptor]),

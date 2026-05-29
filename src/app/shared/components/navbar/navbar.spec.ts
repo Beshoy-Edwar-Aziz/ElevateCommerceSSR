@@ -19,7 +19,7 @@ describe('Navbar',()=>{
     toastr = TestBed.inject(ToastrService);
     fixture = TestBed.createComponent(Navbar); // creating a fixture of component
     de = fixture.debugElement; // accessing DOM
-    el = de.nativeElement; // access DOM API
+    el = de.nativeElement; // access DOM raw API
     component = fixture.componentInstance; // Accessing properties inside component
     fixture.detectChanges();
   })
