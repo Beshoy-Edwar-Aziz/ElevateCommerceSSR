@@ -15,6 +15,7 @@ describe('ProductCard', () => {
   let de: DebugElement;
   let productId: string = 'awdawd';
   const product: productsInterface = productSample;
+  const wish:productsInterface[] = WishList;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductCard],
@@ -24,6 +25,7 @@ describe('ProductCard', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement;
     fixture.componentRef.setInput('product', product);
+    fixture.componentRef.setInput('wishList',wish);
     fixture.detectChanges();
   });
   it('should create component', () => {
@@ -51,5 +53,12 @@ describe('ProductCard', () => {
     fixture.detectChanges();
     expect(isProductSpyOn).toHaveBeenCalledTimes(2);
   });
+  it('should add class fa-solid to wishlist btn', ()=>{
+    const spy = vi.spyOn(component,'isProducts').mockReturnValue(true);
+    const btn = de.query(By.css('.wish-btn'));
+    const data = component.isProducts();
+    fixture.detectChanges();
+    expect(data).toBe(true);
 
+  })
 });
