@@ -52,7 +52,7 @@ export class AllOrders implements OnInit {
 
   checkoutForVisa(){
     if(this.shippingAddress.valid){
-      this.orderService.createVisaCheckout(this.finalCartList().cartId,this.shippingAddress.value).pipe(takeUntilDestroyed(this.destroy)).subscribe({
+      this.orderService.createVisaCheckout(this.finalCartList().cartId,this.shippingAddress.value)?.pipe(takeUntilDestroyed(this.destroy)).subscribe({
         next:(res)=>{
           console.log(res);
           location.href=res.session.url;

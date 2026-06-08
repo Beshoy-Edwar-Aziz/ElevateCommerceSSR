@@ -61,7 +61,7 @@
         <div class="flex flex-col gap-5">
           <button
             type="submit"
-            class="text-white bg-brand box-border border border-transparent cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+            class="visa-btn text-white bg-brand box-border border border-transparent cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
             [disabled]="shippingAddress.invalid"
             [class.bg-gray-200]="shippingAddress.invalid"
             (click)="checkoutForVisa()"
@@ -100,7 +100,7 @@
           <span class="col-span-10 md:col-span-1">{{ cart.price | currency: 'EGP' }}</span>
         </div>
       } @empty {
-        <h2 class="text-main">Order is Empty</h2>
+        <h2 class="order-empty-msg text-main">Order is Empty</h2>
       }
     </div>
     <div class="font-bold text-2xl flex justify-between mx-1">

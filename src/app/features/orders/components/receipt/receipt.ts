@@ -25,7 +25,7 @@ export class Receipt implements OnInit  {
   orderData:WritableSignal<OrdersInterface>= signal<OrdersInterface>({} as  OrdersInterface);
   userData!:TokenInterface;
   checkoutForCash(){
-    if(this.shippingAddress().valid){
+    if(this.shippingAddress()?.valid){
     this.orderService.createCashCheckout(this.cartId()!,this.shippingAddress().value).pipe(takeUntilDestroyed(this.destroy)).subscribe({
       next:({data})=>{
         this.orderData.set(data);

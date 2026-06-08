@@ -1,7 +1,6 @@
 import {
   MOCK_CART,
   MOCK_GET_LOGGED_USER_ORDERS,
-  MOCK_PRODS,
   MOCK_RETURN_VALUE_TOKEN,
   MOCK_TOKEN,
 } from './../../../../shared/utilities/testing';
@@ -10,7 +9,7 @@ import { AllOrders } from './all-orders';
 import { DebugElement } from '@angular/core';
 import { OrderService } from '../../services/order-service';
 import { By } from '@angular/platform-browser';
-import { provideToastr, ToastrService } from 'ngx-toastr';
+import { provideToastr } from 'ngx-toastr';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../../../app.routes';
@@ -29,7 +28,8 @@ describe('AllOrders', () => {
   beforeEach(async () => {
     mockOrdersService = {
       getLoggedUserOrders: vi.fn(),
-      createCashCheckout:vi.fn()
+      createCashCheckout: vi.fn(),
+      createVisaCheckout:vi.fn()
     };
     mockAuthService = {
       getToken: vi.fn(),
@@ -43,9 +43,9 @@ describe('AllOrders', () => {
     mockOrdersService.getLoggedUserOrders.mockReturnValue(of(MOCK_GET_LOGGED_USER_ORDERS));
     mockOrdersService.createCashCheckout.mockReturnValue(of(MOCK_GET_LOGGED_USER_ORDERS));
     mockCartService.getLoggedUserCart.mockReturnValue(of(MOCK_CART));
-
+    mockOrdersService.createVisaCheckout.mockReturnValue(of());
     await TestBed.configureTestingModule({
-      imports: [AllOrders,Navbar],
+      imports: [AllOrders, Navbar],
       providers: [
         { provide: OrderService, useValue: mockOrdersService },
         provideToastr(),
@@ -60,7 +60,6 @@ describe('AllOrders', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement;
     fixture.detectChanges();
-
     await fixture.whenStable();
   });
 
@@ -83,4 +82,33 @@ describe('AllOrders', () => {
     const recieptComponent = de.query(By.css('app-receipt'));
     expect(recieptComponent).toBeTruthy();
   });
+  it('should call checkout with visa', async () => {
+    const spy = vi.spyOn(component,'checkoutForVisa');
+    component.shippingAddress.setValue({
+      details: '123 street city',
+      city: 'Cairo',
+      phone: '01201493556',
+    });
+    fixture.detectChanges();
+    const btn = de.query(By.css('.visa-btn'));
+    btn.nativeElement.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(spy).toHaveBeenCalledOnce();
+  });
+  it('should not submit form in case of fields being empty',()=>{
+    const cashBtn = de.query(By.css('.cash-btn'));
+    const visaBtn = de.query(By.css('.visa-btn'));
+    cashBtn.nativeElement.click();
+    visaBtn.nativeElement.click();
+    fixture.detectChanges();
+    expect(cashBtn.nativeElement.disabled).toBe(true);
+    expect(visaBtn.nativeElement.disabled).toBe(true);
+  })
+  it('should display Order is Empty message',()=>{
+    component.finalCartList.set({data:{products:[]}} as any);
+    fixture.detectChanges();
+    const msg = de.query(By.css('.order-empty-msg'));
+    expect(msg.nativeElement.textContent).toContain('Order is Empty')
+  })
 });
