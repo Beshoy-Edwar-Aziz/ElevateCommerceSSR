@@ -23,11 +23,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class AllOrders implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
-  private readonly flowbiteService = inject(FlowbiteService);
   private readonly cartService = inject(CartService);
   private readonly orderService = inject(OrderService);
   private readonly cartUpdateService = inject(UpdateCartNumbersService);
-  private readonly routerService = inject(Router);
   readonly destroy = inject(DestroyRef);
   shippingAddress!:FormGroup;
   createdOrderDetails:WritableSignal<any>= signal<any>({});

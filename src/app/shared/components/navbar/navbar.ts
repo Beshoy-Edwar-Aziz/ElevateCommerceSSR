@@ -46,7 +46,7 @@ export class Navbar implements OnInit {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe({
         next: (res) => {
-          this.cartService.cartCounter.set(res.numOfCartItems);
+          this.cartService.cartCounter?.set(res.numOfCartItems);
         },
       });
   }

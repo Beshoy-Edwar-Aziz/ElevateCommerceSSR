@@ -1,25 +1,25 @@
 <div class="block fixed bg-dark top-0 right-50 left-0 rtl:left-50 rtl:right-0 z-50 w-full h-full">
   <div class="block p-4 w-full h-full">
-    <!-- Modal content -->
+
     <div
       class="block h-full bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6"
     >
-      <!-- Modal header -->
+
       <div class="flex items-center justify-center border-b border-default pb-4 md:pb-5">
         <h3 class="text-6xl text-center font-bold text-main">{{'order.invoice'|translate}}</h3>
       </div>
-      <!-- Modal body -->
+
       <div class="grid grid-cols-12 gap-3">
         <div class="col-span-4">
           <p class="font-bold">{{'order.billedTo'|translate}} :</p>
         </div>
         <div class="col-span-4">
           <p>{{ userData.name }}</p>
-          <p>{{ orderData().shippingAddress.details }}</p>
+          <p>{{ orderData()?.shippingAddress?.details }}</p>
         </div>
         <div class="col-span-4">
           <p>Date Of Creation</p>
-          <p>{{ orderData().createdAt | date }}</p>
+          <p>{{ orderData()?.createdAt | date }}</p>
         </div>
       </div>
       <div class="grid grid-cols-12 font-bold border-b-3">
@@ -28,7 +28,7 @@
         <h2 class="col-span-3">{{'order.price'|translate}}</h2>
         <h2 class="col-span-3">{{'order.total'|translate}}</h2>
       </div>
-      @for (cartItem of orderData().cartItems; track cartItem._id) {
+      @for (cartItem of orderData()?.cartItems; track cartItem._id) {
         <div class="grid grid-cols-12 border-b mt-2 pb-4">
           <div class="col-span-4 text-xs md:text-xl">
             @for (product of products(); track product._id) {
@@ -52,10 +52,10 @@
       <div class="flex justify-end text-main">
         <div class="flex-col items-center text-center">
           <h2 class="text-3xl font-extrabold">{{'cart.totalPrice'|translate}}</h2>
-          <span class="font-bold">{{ orderData().totalOrderPrice|currency:'EGP' }}</span>
+          <span class="font-bold">{{ orderData()?.totalOrderPrice|currency:'EGP' }}</span>
         </div>
       </div>
-      <!-- Modal footer -->
+
       <div class="flex items-center justify-between space-x-4 pt-4 md:pt-5">
         <button
           type="button"
