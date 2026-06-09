@@ -59,16 +59,16 @@ export class ProductDetails implements OnInit {
     });
   }
   updateMetaAndTitle(product: SpecifiedProduct) {
-    this.title.setTitle(product.title);
-    this.meta.updateTag({ property: 'og:title', content: product.title });
-    this.meta.updateTag({ property: 'og:description', content: product.description });
-    this.meta.updateTag({ property: 'og:image', content: product.imageCover });
+    this.title.setTitle(product?.title);
+    this.meta.updateTag({ property: 'og:title', content: product?.title });
+    this.meta.updateTag({ property: 'og:description', content: product?.description });
+    this.meta.updateTag({ property: 'og:image', content: product?.imageCover });
     this.meta.updateTag({ property: 'og:type', content: 'product' });
     this.meta.updateTag({
       property: 'og:url',
-      content: `https://elevatecommercessr.vercel.app/#/user/productDetail/${product._id}`,
+      content: `https://elevatecommercessr.vercel.app/#/user/productDetail/${product?._id}`,
     });
-    this.meta.updateTag({ name: 'description', content: product.description });
+    this.meta.updateTag({ name: 'description', content: product?.description });
   }
 
   ngOnInit(): void {

@@ -9,6 +9,6 @@ export class SearchPipe implements PipeTransform {
   private readonly productService = inject(ProductService);
   transform(products:productsInterface[],searchTerm:string) {
 
-    return  products.filter((value)=>value.title?.toLowerCase()?.includes(searchTerm?.toLowerCase()));
+    return  products?.filter((value)=>value.title?.toLowerCase()?.includes(searchTerm?.toLowerCase()));
   }
 }
