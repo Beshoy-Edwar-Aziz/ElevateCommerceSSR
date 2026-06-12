@@ -36,7 +36,7 @@ export class UserAddress implements OnInit {
         this.address.set(res.data);
         this.isLoading.set(false);
         this.closeForm();
-        this.addressForm.setValue({name:'',details:'',phone:'',city:''});
+        this.addressForm.reset();
       }
     })
   }

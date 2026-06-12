@@ -6,7 +6,7 @@
   >
     <div class="flex justify-between my-2">
       <h1 class="text-center font-sans font-bold text-xl">{{'profile.addUserAddress'|translate}}:</h1>
-      <button (click)="closeForm()"><i class="fa-solid fa-close cursor-pointer"></i></button>
+      <button (click)="closeForm()" class="close-btn"><i class="fa-solid fa-close cursor-pointer"></i></button>
     </div>
     <div class="relative z-0 w-full mb-5 group">
       <input
@@ -79,7 +79,7 @@
 
     <button
       type="submit"
-      class="text-white bg-brand box-border border border-transparent cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+      class="text-white submit-btn bg-brand box-border border border-transparent cursor-pointer focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
       [disabled]="addressForm.invalid"
       [class.bg-gray-200]="addressForm.invalid"
     >

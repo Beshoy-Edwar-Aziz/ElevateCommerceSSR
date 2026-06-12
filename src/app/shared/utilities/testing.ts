@@ -3,6 +3,7 @@ import { Cart } from '../../features/cart/models/Cart.interface';
 import { OrdersInterface } from '../../features/orders/models/orders-interface';
 import { productsInterface } from '../../features/products/models/products-interface';
 import { SpecifiedProduct } from '../../features/products/models/specified-product';
+import { UserAddressInterface } from '../../features/profile/models/user-address-interface';
 
 export let MOCK_TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZGJiN2M5NjYxNDEyNTE3MjllZmVjNCIsIm5hbWUiOiJCb3NoIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3ODA4NjczMTMsImV4cCI6MTc4ODY0MzMxM30.dC9FtpV8Uw8ecBQ2lGPF2bmI3bk_vvHhuOe27L-PpP4';
@@ -163,3 +164,11 @@ export let MOCK_SPECIFIC_PRODUCT: SpecifiedProduct = {
   title:'Woman Shawl',
   updatedAt:'2026-06-09T14:17:49.395Z'
 };
+export let MOCK_ADDRESSES:UserAddressInterface[] = [{
+  _id:'6a107573289c9500125a103c',
+  city:'Cairo',
+  details:'Cairo, Egypt',
+  name:'Beshoy',
+  phone:'01201493556'
+}];
+

@@ -31,11 +31,11 @@ describe('ProductList', () => {
   let mockWishListService:any;
   beforeEach(async () => {
     mockProductsService={
-      getProducts:vi.fn().mockReturnValue(of(MOCK_PRODS))
+      getProducts:vi.fn().mockReturnValue(of({data:MOCK_PRODS}))
     }
     mockWishListService={
-      getWishList:vi.fn().mockReturnValue(of(MOCK_PRODS)),
-      addToWishList:vi.fn().mockReturnValue(of(MOCK_PRODS)),
+      getWishList:vi.fn().mockReturnValue(of({data:MOCK_PRODS})),
+      addToWishList:vi.fn().mockReturnValue(of({data:MOCK_PRODS})),
       wishListAdded:signal<any>({})
     }
     await TestBed.configureTestingModule({
@@ -108,7 +108,6 @@ describe('ProductList', () => {
   // });
   it('should call add to cart method on clicking add to cart in child component (product card)', async () => {
     const spy = vi.spyOn(component, 'addProductToCart');
-    component.products.set(MOCK_PRODS);
     fixture.detectChanges();
     const deferred = await fixture.getDeferBlocks();
     await deferred[0]?.render(DeferBlockState.Complete);
@@ -120,7 +119,6 @@ describe('ProductList', () => {
   });
   it('should call add to wishList method on clicking heart icon in child component (product card)', async () => {
     const spy = vi.spyOn(component, 'addProductToWishList');
-    component.products.set(MOCK_PRODS);
     fixture.detectChanges();
     const deferred = await fixture.getDeferBlocks();
     await deferred[0]?.render(DeferBlockState.Complete);
