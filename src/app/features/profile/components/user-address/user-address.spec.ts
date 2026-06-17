@@ -42,7 +42,6 @@ describe('UserAddress', () => {
     expect(component).toBeTruthy();
   });
   it('should add address', async () => {
-    const spy = vi.spyOn(mockAddressService, 'addAddress');
     const closeSpy = vi.spyOn(component,'closeForm');
     component.addressForm.setValue({
       name: 'Bosh',
@@ -56,8 +55,8 @@ describe('UserAddress', () => {
     expect(btn.nativeElement.disabled).toBe(false);
     btn.nativeElement.click();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith({
+    expect(mockAddressService.addAddress).toHaveBeenCalledOnce();
+    expect(mockAddressService.addAddress).toHaveBeenCalledWith({
       name: 'Bosh',
       details: 'Cairo,Egypt',
       phone: '01201493556',
@@ -67,7 +66,6 @@ describe('UserAddress', () => {
     expect(closeSpy).toHaveBeenCalledOnce();
   });
   it('should not add address while the form is invalid', () => {
-    const spy = vi.spyOn(mockAddressService, 'addAddress');
     component.addressForm.setValue({
       name: 'Bosh',
       details: 'Cairo,Egypt',
@@ -80,7 +78,7 @@ describe('UserAddress', () => {
     expect(btn.nativeElement.disabled).toBe(true);
     btn.nativeElement.click();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalledTimes(0);
+    expect(mockAddressService.addAddress).toHaveBeenCalledTimes(0);
 
     expect(component.address()).toEqual(MOCK_ADDRESSES);
   });

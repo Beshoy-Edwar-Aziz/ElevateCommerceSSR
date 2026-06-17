@@ -54,7 +54,7 @@ describe('ProductCard', () => {
     expect(isProductSpyOn).toHaveBeenCalledTimes(2);
   });
   it('should add class fa-solid to wishlist btn', ()=>{
-    const spy = vi.spyOn(component,'isProducts').mockReturnValue(true);
+     vi.spyOn(component,'isProducts').mockReturnValue(true);
     const btn = de.query(By.css('.wish-btn'));
     const data = component.isProducts();
     fixture.detectChanges();

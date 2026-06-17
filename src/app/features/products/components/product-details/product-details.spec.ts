@@ -9,13 +9,14 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { CartService } from '../../../cart/services/cart-service';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { Mocked } from 'vitest';
 
 describe('ProductDetails', () => {
   let component: ProductDetails;
   let fixture: ComponentFixture<ProductDetails>;
   let de:DebugElement;
-  let mockProductServices: any;
-  let mockCartService: any;
+  let mockProductServices: Partial<Mocked<ProductService>>;
+  let mockCartService: Partial<Mocked<CartService>>;
   beforeEach(async () => {
     mockProductServices = {
       getSpecificProduct: vi.fn().mockReturnValue(of({ data: MOCK_SPECIFIC_PRODUCT })),
@@ -52,16 +53,14 @@ describe('ProductDetails', () => {
     expect(component).toBeTruthy();
   });
   it('should call specific Product', async () => {
-    const spy = vi.spyOn(mockProductServices, 'getSpecificProduct');
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith(MOCK_SPECIFIC_PRODUCT.id);
+    expect(mockProductServices.getSpecificProduct).toHaveBeenCalledOnce();
+    expect(mockProductServices.getSpecificProduct).toHaveBeenCalledWith(MOCK_SPECIFIC_PRODUCT.id);
   });
   it('should call addtocart on pressing the add to cart btn',()=>{
-    const spy = vi.spyOn(mockCartService,'AddProductToCart');
     const btn = de.query(By.css('.add-btn'));
     btn.nativeElement.click();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith(MOCK_SPECIFIC_PRODUCT.id);
+    expect(mockCartService.AddProductToCart).toHaveBeenCalledOnce();
+    expect(mockCartService.AddProductToCart).toHaveBeenCalledWith(MOCK_SPECIFIC_PRODUCT.id);
   })
 });

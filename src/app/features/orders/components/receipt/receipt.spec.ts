@@ -9,21 +9,22 @@ import { MOCK_RETURN_VALUE_TOKEN, MOCK_TOKEN } from '../../../../shared/utilitie
 import { OrderService } from '../../services/order-service';
 import { input, inputBinding, signal } from '@angular/core';
 import { of } from 'rxjs';
+import { Mocked } from 'vitest';
 
 describe('Receipt', () => {
   let component: Receipt;
   let fixture: ComponentFixture<Receipt>;
-  let mockAuthService: any;
-  let mockOrderService: any;
+  let mockAuthService: Partial<Mocked<Auth>>;
+  let mockOrderService: Partial<Mocked<OrderService>>;
   let shipping = signal<any>({});
   beforeEach(async () => {
     shipping.set({})
     mockAuthService = {
-      getToken: vi.fn(),
-      decodeToken: vi.fn(),
+      getToken: vi.fn().mockReturnValue(MOCK_TOKEN),
+      decodeToken: vi.fn().mockReturnValue(MOCK_RETURN_VALUE_TOKEN),
     };
     mockOrderService = {
-      createCashCheckout: vi.fn(),
+      createCashCheckout: vi.fn().mockReturnValue(of()),
     };
     await TestBed.configureTestingModule({
       imports: [Receipt],
@@ -34,8 +35,7 @@ describe('Receipt', () => {
         { provide: OrderService, useValue: mockOrderService },
       ],
     }).compileComponents();
-    mockAuthService.getToken.mockReturnValue(MOCK_TOKEN);
-    mockAuthService.decodeToken.mockReturnValue(MOCK_RETURN_VALUE_TOKEN);
+
     fixture = TestBed.createComponent(Receipt, {
       bindings: [inputBinding('shippingAddress', shipping)],
     });
@@ -59,20 +59,16 @@ describe('Receipt', () => {
         phone: '01201493556',
       },
     });
-    mockOrderService.createCashCheckout.mockReturnValue(of());
-    const spy = vi.spyOn(mockOrderService, 'createCashCheckout');
     fixture.detectChanges();
     expect(component.shippingAddress().valid).toBe(true);
-    expect(spy).toHaveBeenCalledOnce();
+    expect(mockOrderService.createCashCheckout).toHaveBeenCalledOnce();
   });
   it('should not create a checkout cash', () => {
     shipping.set({
       valid: false
     });
-    mockOrderService.createCashCheckout.mockReturnValue(of());
-    const spy = vi.spyOn(mockOrderService, 'createCashCheckout');
     fixture.detectChanges();
     expect(component.shippingAddress().valid).toBe(false);
-    expect(spy).toHaveBeenCalledTimes(0);
+    expect(mockOrderService.createCashCheckout).toHaveBeenCalledTimes(0);
   });
 });

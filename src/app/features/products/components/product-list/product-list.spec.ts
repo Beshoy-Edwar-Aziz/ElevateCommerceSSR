@@ -4,7 +4,7 @@ import {
   DeferBlockState,
   TestBed,
 } from '@angular/core/testing';
-import { describe, it, beforeEach } from 'vitest';
+import { describe, it, beforeEach, Mocked } from 'vitest';
 import { ProductList } from './product-list';
 import { ProductCard } from '../product-card/product-card';
 import { provideRouter } from '@angular/router';
@@ -27,8 +27,8 @@ describe('ProductList', () => {
   let de: DebugElement;
   let prod!: productsInterface;
   // let httpMock: HttpTestingController;
-  let mockProductsService:any;
-  let mockWishListService:any;
+  let mockProductsService:Partial<Mocked<ProductService>>;
+  let mockWishListService:Partial<Mocked<WishListService>>;
   beforeEach(async () => {
     mockProductsService={
       getProducts:vi.fn().mockReturnValue(of({data:MOCK_PRODS}))
@@ -36,7 +36,7 @@ describe('ProductList', () => {
     mockWishListService={
       getWishList:vi.fn().mockReturnValue(of({data:MOCK_PRODS})),
       addToWishList:vi.fn().mockReturnValue(of({data:MOCK_PRODS})),
-      wishListAdded:signal<any>({})
+      wishListAdded:signal<any>({}) as any
     }
     await TestBed.configureTestingModule({
       imports: [ProductList, ProductCard],

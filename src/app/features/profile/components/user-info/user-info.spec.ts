@@ -13,13 +13,14 @@ import { AddressesService } from '../../services/addresses-service';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { UserAddress } from '../user-address/user-address';
+import { Mocked } from 'vitest';
 
 describe('UserInfo', () => {
   let component: UserInfo;
   let fixture: ComponentFixture<UserInfo>;
   let de: DebugElement;
   let mockAuthService: any;
-  let mockAddressService: any;
+  let mockAddressService: Partial<Mocked<AddressesService>>;
   beforeEach(async () => {
     mockAuthService = {
       getToken: vi.fn().mockReturnValue(MOCK_TOKEN),
@@ -74,14 +75,13 @@ describe('UserInfo', () => {
     expect(formComponent).toBeFalsy();
   });
   it('should delete the address card on pushing a button', async () => {
-    const spy = vi.spyOn(mockAddressService, 'deleteAddress');
     const addressCard = de.query(By.css('app-address-card'));
     expect(addressCard).toBeTruthy();
     const deleteBtn = de.query(By.css('app-address-card .delete-btn'));
     deleteBtn.nativeElement.click();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalledWith(MOCK_ADDRESSES[0]._id);
-    expect(spy).toHaveBeenCalledOnce();
+    expect(mockAddressService.deleteAddress).toHaveBeenCalledWith(MOCK_ADDRESSES[0]._id);
+    expect(mockAddressService.deleteAddress).toHaveBeenCalledOnce();
     const addressCardTotal = de.queryAll(By.css('app-address-card'));
     expect(addressCardTotal.length).toBe(0);
   });

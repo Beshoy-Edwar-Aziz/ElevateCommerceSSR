@@ -26,7 +26,7 @@ describe('ReviewList', () => {
       decodeToken: vi.fn().mockReturnValue(MOCK_RETURN_VALUE_TOKEN),
     };
     mockReviewService = {
-      getReviewsForSpecificProduct: vi.fn().mockReturnValue(of({data:[MOCK_REVIEW]})),
+      getReviewsForSpecificProduct: vi.fn().mockReturnValue(of({ data: [MOCK_REVIEW] })),
       editReview: vi.fn().mockReturnValue(of()),
       createReviewsForSpecificProduct: vi.fn().mockReturnValue(of()),
     };
@@ -42,20 +42,18 @@ describe('ReviewList', () => {
     fixture = TestBed.createComponent(ReviewList);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('productId', MOCK_REVIEW.product);
-        component.reviewId = MOCK_REVIEW._id;
+    component.reviewId = MOCK_REVIEW._id;
     de = fixture.debugElement;
     // await fixture.whenStable();
   });
 
   it('should create', () => {
     fixture.detectChanges();
-    const spy = vi.spyOn(mockReviewService,'getReviewsForSpecificProduct');
-    expect(spy).toHaveBeenCalledOnce();
+    expect(mockReviewService.getReviewsForSpecificProduct).toHaveBeenCalledOnce();
     expect(component).toBeTruthy();
   });
   it('should create a review', () => {
     fixture.detectChanges();
-    const spy = vi.spyOn(mockReviewService, 'createReviewsForSpecificProduct');
     component.reviewPosting.setValue({
       review: 'awdawnda',
       rating: '5',
@@ -65,11 +63,10 @@ describe('ReviewList', () => {
     btn.nativeElement.click();
     fixture.detectChanges();
     expect(component.reviewPosting.valid).toBeTruthy();
-    expect(spy).toHaveBeenCalledOnce();
+    expect(mockReviewService.createReviewsForSpecificProduct).toHaveBeenCalledOnce();
   });
   it('should edit a review', () => {
     fixture.detectChanges();
-    const spy = vi.spyOn(mockReviewService, 'editReview');
     component.reviewEdit.setValue({
       review: 'awdawnda',
       rating: '5',
@@ -81,16 +78,16 @@ describe('ReviewList', () => {
     const btn = de.query(By.css('.edit-review-btn'));
     btn.nativeElement.click();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith(component.reviewId,{
+    expect(mockReviewService.editReview).toHaveBeenCalledOnce();
+    expect(mockReviewService.editReview).toHaveBeenCalledWith(component.reviewId, {
       review: 'awdawnda',
       rating: '5',
-    })
+    });
   });
-  it('should display a message on reviewList being empty',()=>{
+  it('should display a message on reviewList being empty', () => {
     mockReviewService.getReviewsForSpecificProduct?.mockReturnValue(of([]));
     fixture.detectChanges();
     const message = de.query(By.css('.msg'));
     expect(message.nativeElement.textContent).toContain('No Reviews Availabe For This Product');
-  })
+  });
 });

@@ -49,9 +49,8 @@ describe('UserOrders', () => {
   });
   it('should call orderService method oninit', ()=>{
     fixture.detectChanges();
-    const spy = vi.spyOn(mockOrderService,'getLoggedUserOrders');
-    expect(spy).toHaveBeenCalledOnce();
-    expect(spy).toHaveBeenCalledWith(component.userData.id);
+    expect(mockOrderService.getLoggedUserOrders).toHaveBeenCalledOnce();
+    expect(mockOrderService.getLoggedUserOrders).toHaveBeenCalledWith(component.userData.id);
     expect(component.loggedUserOrdersList()).toEqual(MOCK_LOGGED_USER_ORDERS);
   })
   it('should display No Orders Available Message', async ()=>{
