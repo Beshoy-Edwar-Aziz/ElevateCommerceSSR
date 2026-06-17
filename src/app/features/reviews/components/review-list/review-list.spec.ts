@@ -44,15 +44,17 @@ describe('ReviewList', () => {
     fixture.componentRef.setInput('productId', MOCK_REVIEW.product);
         component.reviewId = MOCK_REVIEW._id;
     de = fixture.debugElement;
-    await fixture.whenStable();
+    // await fixture.whenStable();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     const spy = vi.spyOn(mockReviewService,'getReviewsForSpecificProduct');
     expect(spy).toHaveBeenCalledOnce();
     expect(component).toBeTruthy();
   });
   it('should create a review', () => {
+    fixture.detectChanges();
     const spy = vi.spyOn(mockReviewService, 'createReviewsForSpecificProduct');
     component.reviewPosting.setValue({
       review: 'awdawnda',
@@ -66,6 +68,7 @@ describe('ReviewList', () => {
     expect(spy).toHaveBeenCalledOnce();
   });
   it('should edit a review', () => {
+    fixture.detectChanges();
     const spy = vi.spyOn(mockReviewService, 'editReview');
     component.reviewEdit.setValue({
       review: 'awdawnda',
@@ -84,4 +87,10 @@ describe('ReviewList', () => {
       rating: '5',
     })
   });
+  it('should display a message on reviewList being empty',()=>{
+    mockReviewService.getReviewsForSpecificProduct?.mockReturnValue(of([]));
+    fixture.detectChanges();
+    const message = de.query(By.css('.msg'));
+    expect(message.nativeElement.textContent).toContain('No Reviews Availabe For This Product');
+  })
 });
