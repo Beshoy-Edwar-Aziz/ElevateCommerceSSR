@@ -3,7 +3,9 @@ import { Cart } from '../../features/cart/models/Cart.interface';
 import { OrdersInterface } from '../../features/orders/models/orders-interface';
 import { productsInterface } from '../../features/products/models/products-interface';
 import { SpecifiedProduct } from '../../features/products/models/specified-product';
+import { LoggedUserOrdersInterface } from '../../features/profile/models/logged-user-orders-interface';
 import { UserAddressInterface } from '../../features/profile/models/user-address-interface';
+import { ReviewsInterface } from '../../features/reviews/models/Reviews.interface';
 
 export let MOCK_TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZGJiN2M5NjYxNDEyNTE3MjllZmVjNCIsIm5hbWUiOiJCb3NoIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3ODA4NjczMTMsImV4cCI6MTc4ODY0MzMxM30.dC9FtpV8Uw8ecBQ2lGPF2bmI3bk_vvHhuOe27L-PpP4';
@@ -171,4 +173,81 @@ export let MOCK_ADDRESSES:UserAddressInterface[] = [{
   name:'Beshoy',
   phone:'01201493556'
 }];
+export let MOCK_NEW_ADDRESSES:UserAddressInterface[]= [...MOCK_ADDRESSES,{ _id:'6a107573289c9500125a103c',
+  city:'HORUS',
+  details:'COPTIC, Egypto',
+  name:'Beshoy COPTIC ORTHDOX',
+  phone:'01201493556'}]
+export let MOCK_LOGGED_USER_ORDERS:LoggedUserOrdersInterface[]= [{
+  shippingAddress: {
+    details: '123 Main St',
+    phone: '01201493556',
+    city: 'Cairo',
+    postalCode: '12345',
+  },
+  taxPrice: 10,
+  shippingPrice: 20,
+  totalOrderPrice: 230,
+  paymentMethodType: 'cash',
+  isPaid: false,
+  isDelivered: false,
+  _id: 'order-id-1',
+  user: {
+    _id: 'user-id-1',
+    name: 'John Doe',
+    email: 'johndoe@gmail.com',
+  },
+  cartItems: [
+    {
+      count: 2,
+      _id: 'cart-item-id-1',
+      product: {
+        subcategory: [
+          {
+            _id: 'subcategory-id-1',
+            name: 'Mock Subcategory',
+            slug: 'mock-subcategory',
+            category: 'category-id-1',
+          },
+        ],
+        ratingsQuantity: 100,
+        _id: 'product-id-1',
+        title: 'Mock Product',
+        imageCover: 'mock-image-cover.jpg',
+        category: {
+          _id: 'category-id-1',
+          name: 'Mock Category',
+          slug: 'mock-category',
+          image: 'mock-category-image.jpg',
+        },
+        brand: {
+          _id: 'brand-id-1',
+          name: 'Mock Brand',
+          slug: 'mock-brand',
+          image: 'mock-brand-image.jpg',
+        },
+        ratingsAverage: 4.5,
+        id: 'product-id-1',
+      },
+      price: 100,
+    },
+  ],
+  createdAt: '2024-01-01T00:00:00.000Z',
+  updatedAt: '2024-01-01T00:00:00.000Z',
+  id: 1,
+  __v: 0,
+}
 
+]
+export const MOCK_REVIEW: ReviewsInterface = {
+  _id: '65f2c3a1b8e4f123456789ab',
+  review: 'Absolutely love this product! The build quality is top-notch and it arrived a day earlier than expected.',
+  rating: 5,
+  product: 'prod_987654321xyz',
+  user: {
+    _id: 'usr_01hpv234567890abcdef',
+    name: 'Sarah Jenkins'
+  },
+  createdAt: '2026-06-15T10:30:00.000Z',
+  updatedAt: '2026-06-15T14:25:00.000Z'
+};

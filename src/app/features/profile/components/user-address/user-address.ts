@@ -28,8 +28,8 @@ export class UserAddress implements OnInit {
     })
   }
   submitForm(){
+     this.isLoading.set(true);
     if(this.addressForm.valid){
-    this.isLoading.set(true);
     this.addressService.addAddress(this.addressForm.value).pipe(takeUntilDestroyed(this.destroy)).subscribe({
       next:(res)=>{
         console.log(res);
@@ -40,6 +40,7 @@ export class UserAddress implements OnInit {
       }
     })
   }
+  this.isLoading.set(false);
   }
   ngOnInit(): void {
     this.formInit();
