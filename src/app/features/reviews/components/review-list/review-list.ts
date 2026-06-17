@@ -50,6 +50,7 @@ export class ReviewList implements OnInit {
     });
   }
   submitFormCreate() {
+    if(this.reviewPosting.valid){
     this.reviewService
       .createReviewsForSpecificProduct(this.productId, this.reviewPosting.value).pipe(takeUntilDestroyed(this.destroy))
       .subscribe({
@@ -61,6 +62,7 @@ export class ReviewList implements OnInit {
           console.log(err);
         },
       });
+    }
     console.log(this.reviewPosting.value);
   }
   formInit() {

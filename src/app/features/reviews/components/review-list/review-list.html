@@ -33,7 +33,7 @@
       <validation-messages [controls]="reviewPosting.get('rating')"></validation-messages>
       <button
         type="submit"
-        class="text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        class="create-review-btn text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
         [disabled]="reviewPosting.invalid"
         [class.bg-gray]="reviewPosting.invalid"
       >
@@ -67,7 +67,7 @@
                 formControlName="review"
               ></textarea>
             </div>
-            <validation-messages [controls]="reviewPosting.get('review')"></validation-messages>
+            <validation-messages [controls]="reviewEdit.get('review')"></validation-messages>
 
             <div class="mb-5">
               <label for="rating" class="block mb-2.5 text-sm font-medium">{{'review.rateTitle'|translate}}</label>
@@ -80,10 +80,10 @@
                 formControlName="rating"
               />
             </div>
-            <validation-messages [controls]="reviewPosting.get('rating')"></validation-messages>
+            <validation-messages [controls]="reviewEdit.get('rating')"></validation-messages>
             <button
               type="submit"
-              class="text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+              class="edit-review-btn text-white cursor-pointer bg-brand box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
               [disabled]="reviewEdit.invalid"
               [class.bg-gray]="reviewEdit.invalid"
             >
