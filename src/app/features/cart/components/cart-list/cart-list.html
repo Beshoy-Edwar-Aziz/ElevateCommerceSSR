@@ -14,12 +14,12 @@
     <div class="flex justify-between">
       <button
         (click)="emptyCart()"
-        class="bg-main text-white font-libre rounded p-3 cursor-pointer hover:bg-white hover:text-link hover:border hover:border-link transition duration-150"
+        class="empty-btn bg-main text-white font-libre rounded p-3 cursor-pointer hover:bg-white hover:text-link hover:border hover:border-link transition duration-150"
       >
         {{'cart.emptify'|translate}} <i class="fa-solid fa-trash"></i>
       </button>
       <button
-        class="bg-main text-white font-libre rounded p-3 cursor-pointer hover:bg-white hover:text-link hover:border hover:border-link transition duration-150"
+        class="close-btn bg-main text-white font-libre rounded p-3 cursor-pointer hover:bg-white hover:text-link hover:border hover:border-link transition duration-150"
         routerLink="/allorders"
         (click)="closeDrawer()"
         >

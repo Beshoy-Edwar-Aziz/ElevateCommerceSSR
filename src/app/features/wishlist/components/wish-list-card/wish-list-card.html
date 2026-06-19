@@ -6,13 +6,13 @@
     <p class="font-semibold w-80 text-lg md:w-full md:text-sm">{{ wishList.title }}</p>
     <span class="font-medium">{{ wishList.price | currency: 'EGP' }}</span>
     <button
-      class="border py-1 w-full md:w-1/2 rounded border-main hover:bg-main hover:text-white cursor-pointer"
+      class="add-btn border py-1 w-full md:w-1/2 rounded border-main hover:bg-main hover:text-white cursor-pointer"
       (click)="sendProductId()"
     >
       {{'product.add'|translate}}
     </button>
     <button
-      class="absolute rtl:left-0 ltr:right-0 top-0 md:top-20 border rounded-full w-7 h-7 grid justify-center items-center hover:bg-main hover:text-white cursor-pointer"
+      class="delete-btn absolute rtl:left-0 ltr:right-0 top-0 md:top-20 border rounded-full w-7 h-7 grid justify-center items-center hover:bg-main hover:text-white cursor-pointer"
       (click)="deleteProductId()"
     >
       <i class="fa-solid fa-trash"></i>

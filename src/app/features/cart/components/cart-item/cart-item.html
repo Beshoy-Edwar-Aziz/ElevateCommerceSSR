@@ -20,14 +20,14 @@
         <button
           (click)="onUpdateItem(cartItem.count + 1)"
           type="button"
-          class="cursor-pointer inline-flex items-center justify-center text-body bg-neutral-primary-soft rounded-e-base box-border border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary leading-5 w-9 h-9 focus:outline-none"
+          class="update-btn cursor-pointer inline-flex items-center justify-center text-body bg-neutral-primary-soft rounded-e-base box-border border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary leading-5 w-9 h-9 focus:outline-none"
         >
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
       <button
         (click)="onRemoveItem()"
-        class="bg-main mt-2 cursor-pointer hover:bg-dark transition duration-100 text-white rounded p-2"
+        class="remove-btn bg-main mt-2 cursor-pointer hover:bg-dark transition duration-100 text-white rounded p-2"
       >
         {{'cart.remove'|translate}} <i class="fa-solid fa-trash"></i>
       </button>

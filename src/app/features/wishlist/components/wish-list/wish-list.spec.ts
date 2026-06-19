@@ -63,7 +63,6 @@ describe('WishList', () => {
     cardInst.productIdForDelete.emit(MOCK_PRODS[0]._id);
     fixture.detectChanges();
     await fixture.whenStable();
-
     expect(mockWishListService.deleteWishList).toHaveBeenCalledOnce();
     expect(mockWishListService.deleteWishList).toHaveBeenCalledWith(MOCK_PRODS[0]._id);
     expect(mockWishListService.getWishList).toHaveBeenCalledTimes(2);

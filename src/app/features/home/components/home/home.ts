@@ -17,13 +17,13 @@ import { finalize } from 'rxjs';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  private readonly productList = inject(ProductService);
+  private readonly productService = inject(ProductService);
   private readonly categoriesService = inject(CategoriesService);
   private destroy = inject(DestroyRef)
   products:WritableSignal<productsInterface[]> = signal<productsInterface[]>([]);
   categories:WritableSignal<categoriesInterface[]> = signal<categoriesInterface[]>([]);
    getAllProds() {
-    this.productList.getProducts().pipe(takeUntilDestroyed(this.destroy)).subscribe({
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroy)).subscribe({
       next: ({ data }) => {
 
         this.products.set(data);

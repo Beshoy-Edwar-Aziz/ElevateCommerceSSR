@@ -1,5 +1,6 @@
 import { TokenInterface } from '../../core/auth/models/token-interface';
 import { Cart } from '../../features/cart/models/Cart.interface';
+import { categoriesInterface } from '../../features/categories/models/categories-interface';
 import { OrdersInterface } from '../../features/orders/models/orders-interface';
 import { productsInterface } from '../../features/products/models/products-interface';
 import { SpecifiedProduct } from '../../features/products/models/specified-product';
@@ -52,6 +53,70 @@ export let MOCK_CART: Cart = {
     products: [
       {
         count: 1,
+        _id: '6a1339b3fc33d800120f1efb',
+        product: {
+          subcategory: [
+            {
+              _id: '6407f1bcb575d3b90bf95797',
+              name: "Women's Clothing",
+              slug: "women's-clothing",
+              category: '6439d58a0049ad0b52b9003f',
+            },
+          ],
+          _id: '6428eb43dc1175abc65ca0b3',
+          title: 'Woman Shawl',
+          quantity: 220,
+          imageCover:
+            'https://ecommerce.routemisr.com/Route-Academy-products/1680403266739-cover.jpeg',
+          category: {
+            _id: '6439d58a0049ad0b52b9003f',
+            name: "Women's Fashion",
+            slug: "women's-fashion",
+            image: 'https://ecommerce.routemisr.com/Route-Academy-categories/1681511818071.jpeg',
+          },
+          brand: {
+            _id: '64089bbe24b25627a253158b',
+            name: 'DeFacto',
+            slug: 'defacto',
+            image: 'https://ecommerce.routemisr.com/Route-Academy-brands/1678285758109.png',
+          },
+          ratingsAverage: 3.7,
+          id: '6428eb43dc1175abc65ca0b3',
+          slug: 'awdwa',
+        },
+        price: 149,
+      },
+    ],
+  },
+  message: 'success',
+  numOfCartItems: 1,
+  status: 'good',
+};
+export let MOCK_CART_EMPTY: Cart = {
+  cartId: '6a1339b3fc33d800120f1efa',
+  data: {
+    cartOwner: '69dbb7c966141251729efec4',
+    createdAt: '2026-05-24T17:47:31.289Z',
+    totalCartPrice: 0,
+    updatedAt: '2026-05-24T17:47:31.327Z',
+    products: [
+
+    ],
+  },
+  message: 'success',
+  numOfCartItems: 0,
+  status: 'good',
+};
+export let MOCK_CART_UPDATE: Cart = {
+  cartId: '6a1339b3fc33d800120f1efa',
+  data: {
+    cartOwner: '69dbb7c966141251729efec4',
+    createdAt: '2026-05-24T17:47:31.289Z',
+    totalCartPrice: 149,
+    updatedAt: '2026-05-24T17:47:31.327Z',
+    products: [
+      {
+        count: 2,
         _id: '6a1339b3fc33d800120f1efb',
         product: {
           subcategory: [
@@ -251,3 +316,21 @@ export const MOCK_REVIEW: ReviewsInterface = {
   createdAt: '2026-06-15T10:30:00.000Z',
   updatedAt: '2026-06-15T14:25:00.000Z'
 };
+export const MOCK_CATEGORIES:categoriesInterface[]=[
+  {
+    _id: 'cat_789ghi012jkl',
+    name: 'Home & Kitchen',
+    slug: 'home-and-kitchen',
+    image: 'https://example.com/images/categories/home-kitchen.png',
+    createdAt: '2026-02-20T14:15:00.000Z',
+    updatedAt: '2026-05-10T09:45:00.000Z'
+  },
+  {
+    _id: 'cat_345mno678pqr',
+    name: 'Fashion & Apparel',
+    slug: 'fashion-and-apparel',
+    image: 'https://example.com/images/categories/fashion.png',
+    createdAt: '2026-03-05T10:00:00.000Z',
+    updatedAt: '2026-06-18T16:30:00.000Z'
+  }
+]
