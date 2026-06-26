@@ -99,6 +99,6 @@ Live at: https://elevatecommercessr.vercel.app
 Beshoy Edwar Aziz
 
 
-Portfolio: beshoy-edwar-aziz.github.io/Portfolio
+Portfolio: https://beshoy-edwar-aziz.github.io/Portfolio/
 GitHub: @Beshoy-Edwar-Aziz
-LinkedIn: linkedin.com/in/beshoy-salama-ba734427b
+LinkedIn: https://www.linkedin.com/in/beshoy-salama-ba734427b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtGRIHVMMTU%2Be2x6OXeshWg%3D%3D
